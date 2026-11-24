@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 24" width="160" height="24">
+  <line x1="0" y1="12" x2="68" y2="12" stroke="#FE3C47" stroke-width="2" stroke-linecap="round"/>
+  <!-- Mini blood droplet in center -->
+  <path d="M 80 4 C 80 4 73 13 73 17 C 73 20.8 76.1 23 80 23 C 83.9 23 87 20.8 87 17 C 87 13 80 4 80 4 Z" fill="#FE3C47"/>
+  <line x1="92" y1="12" x2="160" y2="12" stroke="#FE3C47" stroke-width="2" stroke-linecap="round"/>
+</svg>

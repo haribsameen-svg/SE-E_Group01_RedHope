@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Blood | Red it - Blood Donation &amp; Campaign</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/separator.svg">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700;800&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Custom Pure CSS (Zero Frameworks) -->
+  <link rel="stylesheet" href="/css/style3.css">
+</head>
+
+<body>
+
+  <!-- ========================================================================
+       TOP BAR
+       ======================================================================== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-inner">
+        <div class="top-bar-info">
+          <div class="top-bar-item">
+            <!-- Heart Drop Icon -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+            <span>Welcome to Red it Donation Center</span>
+          </div>
+          <div class="top-bar-item">
+            <!-- Phone Icon -->
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+            <span>Emergency 24/7: <strong>+92 300 1234567</strong></span>
+          </div>
+        </div>
+        <div class="top-bar-social">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MAIN HEADER / NAVIGATION
+       ======================================================================== -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <!-- Brand Logo -->
+        <a class="navbar-brand" href="request-blood.html">
+          <img src="images/logo-icon.png" alt="Red it Logo" class="brand-logo-img">
+          <div class="brand-text">
+            <span class="brand-title">RED <span>IT</span></span>
+            <span class="brand-tagline">Blood Donation</span>
+          </div>
+        </a>
+
+        <!-- Mobile Navigation Toggle Button -->
+        <button class="navbar-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </button>
+
+        <!-- Nav Items -->
+        <ul class="navbar-nav" id="navbarNav">
+          <li class="nav-item">
+            <a class="nav-link active" href="request-blood.html">Request Blood</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="active-requests.html">Active Requests</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       PAGE HEADER BANNER
+       ======================================================================== -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-header-title">Request Blood</h1>
+      <p class="page-breadcrumb">
+        <a href="active-requests.html">Home</a>
+        <span>/</span>
+        Request Blood
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       MAIN CONTENT: REQUEST FORM SECTION
+       ======================================================================== -->
+  <main class="section-wrapper">
+    <div class="container">
+
+      <!-- Section Title & Subheading -->
+      <div class="section-heading-wrapper">
+        <h2 class="section-heading">Patient Blood Request Form</h2>
+        <p class="section-subheading">
+          Fill out the medical requisition details below. Once submitted, your request will instantly be listed on our
+          active donor board.
+        </p>
+      </div>
+
+      <!-- Form Container Card -->
+      <div class="form-container-card">
+
+        <!-- Submission Feedback Alert Box (Hidden by default) -->
+        <div id="submissionAlert" class="alert-box alert-success" role="alert" aria-live="polite">
+          <div class="alert-header">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+            </svg>
+            <h3 class="alert-title">Blood Request Submitted Successfully!</h3>
+          </div>
+          <div class="alert-body">
+            <p>Your emergency blood requisition has been verified and registered with reference ID:</p>
+            <div class="alert-request-id" id="alertGeneratedId">REQ-000000</div>
+            <p>Donors in your requested city will now be able to view your request on the Active Requests board.</p>
+          </div>
+          <div class="alert-actions">
+            <a href="active-requests.html" class="alert-btn alert-btn-primary">
+              View In Active Requests
+              <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <button type="button" id="alertNewRequestBtn" class="alert-btn alert-btn-secondary">
+              Submit Another Request
+            </button>
+          </div>
+        </div>
+
+        <!-- Instructions Ribbon -->
+        <div class="form-instructions">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+          </svg>
+          <div>
+            <strong>Important Notice:</strong> Please double-check the patient's contact number and hospital location so
+            volunteer donors can reach the patient immediately without delay.
+          </div>
+        </div>
+
+        <!-- Blood Request Form -->
+        <form id="bloodRequestForm" novalidate>
+          <div class="form-grid">
+
+            <!-- Field 1: Patient Name -->
+            <div class="form-group">
+              <label for="patientName" class="form-label">
+                Patient Name <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="text" id="patientName" name="patientName" class="form-control"
+                  placeholder="e.g. Sarah Ahmed" required>
+              </div>
+              <div class="invalid-feedback" id="patientNameError">Please enter the full patient name (at least 3
+                letters).</div>
+            </div>
+
+            <!-- Field 2: Patient Age -->
+            <div class="form-group">
+              <label for="patientAge" class="form-label">
+                Patient Age (Years) <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="number" id="patientAge" name="patientAge" class="form-control" placeholder="e.g. 28"
+                  min="1" max="120" required>
+              </div>
+              <div class="invalid-feedback" id="patientAgeError">Please enter a valid age between 1 and 120.</div>
+            </div>
+
+            <!-- Field 3: Blood Group -->
+            <div class="form-group">
+              <label for="bloodGroup" class="form-label">
+                Required Blood Group <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <select id="bloodGroup" name="bloodGroup" class="form-control" required>
+                  <option value="" disabled selected>-- Select Blood Group --</option>
+                  <option value="A+">A+ (A Positive)</option>
+                  <option value="A-">A- (A Negative)</option>
+                  <option value="B+">B+ (B Positive)</option>
+                  <option value="B-">B- (B Negative)</option>
+                  <option value="AB+">AB+ (AB Positive)</option>
+                  <option value="AB-">AB- (AB Negative)</option>
+                  <option value="O+">O+ (O Positive)</option>
+                  <option value="O-">O- (O Negative)</option>
+                </select>
+              </div>
+              <div class="invalid-feedback" id="bloodGroupError">Please select a valid blood group.</div>
+            </div>
+
+            <!-- Field 4: Required Blood Units -->
+            <div class="form-group">
+              <label for="bloodUnits" class="form-label">
+                Required Units (Bags) <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="number" id="bloodUnits" name="bloodUnits" class="form-control" placeholder="e.g. 2" min="1"
+                  max="10" required>
+              </div>
+              <div class="invalid-feedback" id="bloodUnitsError">Units required must be between 1 and 10 bags.</div>
+            </div>
+
+            <!-- Field 5: Hospital Name -->
+            <div class="form-group">
+              <label for="hospitalName" class="form-label">
+                Hospital / Medical Center Name <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="text" id="hospitalName" name="hospitalName" class="form-control"
+                  placeholder="e.g. Shaukat Khanum Memorial Hospital" required>
+              </div>
+              <div class="invalid-feedback" id="hospitalNameError">Please enter the complete hospital name.</div>
+            </div>
+
+            <!-- Field 6: City -->
+            <div class="form-group">
+              <label for="city" class="form-label">
+                City <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <select id="city" name="city" class="form-control" required>
+                  <option value="" disabled selected>-- Select City --</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Karachi">Karachi</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Faisalabad">Faisalabad</option>
+                  <option value="Multan">Multan</option>
+                  <option value="Peshawar">Peshawar</option>
+                  <option value="Quetta">Quetta</option>
+                  <option value="Sialkot">Sialkot</option>
+                  <option value="Gujranwala">Gujranwala</option>
+                  <option value="Other">Other City</option>
+                </select>
+              </div>
+              <div class="invalid-feedback" id="cityError">Please select the city where blood is required.</div>
+            </div>
+
+            <!-- Field 7: Contact Number -->
+            <div class="form-group">
+              <label for="contactNumber" class="form-label">
+                Contact Number (Attendant / Doctor) <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="tel" id="contactNumber" name="contactNumber" class="form-control"
+                  placeholder="e.g. 03001234567" required>
+              </div>
+              <span class="form-helper">Enter a valid 11-digit mobile number (e.g., 03001234567).</span>
+              <div class="invalid-feedback" id="contactNumberError">Please enter a valid 11-digit mobile phone number
+                (e.g. 03001234567).</div>
+            </div>
+
+            <!-- Field 8: Required Date -->
+            <div class="form-group">
+              <label for="requiredDate" class="form-label">
+                Blood Needed By Date <span class="required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input type="date" id="requiredDate" name="requiredDate" class="form-control" required>
+              </div>
+              <span class="form-helper">Date cannot be in the past. Urgent cases within 48 hours are automatically
+                marked Urgent.</span>
+              <div class="invalid-feedback" id="requiredDateError">Please choose a valid required date (today or a
+                future date).</div>
+            </div>
+
+            <!-- Field 9: Additional Information -->
+            <div class="form-group full-width">
+              <label for="additionalInfo" class="form-label">
+                Additional Information / Case Notes
+              </label>
+              <textarea id="additionalInfo" name="additionalInfo" class="form-control"
+                placeholder="Specify ward/bed number, emergency operation reason, specific donor requirements, or attendant instructions..."
+                rows="4"></textarea>
+              <span class="form-helper">Optional, but helps volunteer donors understand the urgency and find the patient
+                quickly.</span>
+            </div>
+
+            <!-- Form Action Submit Button -->
+            <div class="form-actions">
+              <button type="submit" id="submitRequestBtn" class="btn-theme">
+                <svg viewBox="0 0 24 24">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                </svg>
+                Submit Blood Request
+              </button>
+
+              <button type="reset" id="resetFormBtn" class="btn-outline">
+                Clear Form
+              </button>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer>
+    <div class="footer-widget-area">
+      <div class="container">
+        <div class="footer-grid">
+
+          <!-- Col 1: About Footer -->
+          <div class="footer-widget">
+            <div class="footer-logo">
+              <img src="images/logo-icon.png" alt="Red it Footer Logo">
+              <div class="brand-text">
+                <span class="brand-title">RED <span>IT</span></span>
+                <span class="brand-tagline">Blood Donation</span>
+              </div>
+            </div>
+            <p class="footer-about-text">
+              Red it is a dedicated humanitarian initiative bridging the gap between voluntary blood donors and patients
+              facing urgent medical emergencies. Every drop counts.
+            </p>
+          </div>
+
+          <!-- Col 2: Navigation Links -->
+          <div class="footer-widget">
+            <h3 class="widget-title">Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="request-blood.html">&rsaquo; Request Blood</a></li>
+              <li><a href="active-requests.html">&rsaquo; Active Requests</a></li>
+              <li><a href="#donor-guidelines">&rsaquo; Donor Eligibility</a></li>
+              <li><a href="#blood-types">&rsaquo; Blood Type Compatibility</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Contact Details -->
+          <div class="footer-widget">
+            <h3 class="widget-title">Contact &amp; Support</h3>
+            <ul class="footer-contact-list">
+              <li class="footer-contact-item">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                <span>National Blood Transfusion Center, Medical Block, Lahore</span>
+              </li>
+              <li class="footer-contact-item">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <span>emergency@redit.org</span>
+              </li>
+              <li class="footer-contact-item">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+                <span>Toll-Free Helpline: 0800-BLOOD (25663)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Urgent Notice -->
+          <div class="footer-widget">
+            <h3 class="widget-title">Urgent Need</h3>
+            <p class="footer-about-text">
+              Rare blood groups like <strong>O-Negative</strong> and <strong>AB-Negative</strong> are always critically
+              needed. Check our Active Requests board regularly.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub Footer Copyright -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 <span>Red it</span>. Blood Donation Campaign. All Rights Reserved.</p>
+          <p>University IICT Project &bull; Member 3 Assignment</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page 1 Vanilla JavaScript -->
+  <script src="/js/request-blood.js"></script>
+</body>
+
+</html>
