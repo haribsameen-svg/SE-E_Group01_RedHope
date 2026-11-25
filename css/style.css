@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Red Hope - Shared Stylesheet
+   Shared colours, typography, header, footer, and reusable components
+   ========================================================================== */
+
+:root {
+  --red-main: #E53935;
+  --red-dark: #B71C1C;
+  --grey-dark: #222222;
+  --grey-light: #F5F5F5;
+  --white: #FFFFFF;
+}
+
+/* Base typography and page layout */
+body {
+  font-family: "Lato", sans-serif;
+  color: var(--grey-dark);
+  background-color: var(--grey-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6,
+.brand-title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+}
+
+/* Shared Top Strip & Navbar */
+.top-strip {
+  background-color: var(--red-main);
+  color: var(--white);
+  font-size: 0.875rem;
+}
+
+.top-strip a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.top-strip a:hover {
+  text-decoration: underline;
+}
+
+.site-navbar {
+  background-color: var(--white);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.brand-title {
+  font-size: 1.6rem;
+  color: var(--red-dark);
+  letter-spacing: 0.5px;
+}
+
+.site-navbar .nav-link {
+  color: var(--grey-dark);
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+  color: var(--red-main);
+}
+
+/* Shared Red Buttons */
+.btn-red {
+  background-color: var(--red-main);
+  border-color: var(--red-main);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.btn-red:hover,
+.btn-red:focus {
+  background-color: var(--red-dark);
+  border-color: var(--red-dark);
+  color: var(--white);
+}
+
+.btn-outline-red {
+  color: var(--red-main);
+  border-color: var(--red-main);
+  font-weight: 700;
+}
+
+.btn-outline-red:hover,
+.btn-outline-red:focus {
+  background-color: var(--red-main);
+  color: var(--white);
+}
+
+/* Page Banner */
+.page-banner {
+  background: linear-gradient(135deg, var(--red-dark), var(--red-main));
+  color: var(--white);
+  padding: 2.5rem 0;
+}
+
+.page-banner .breadcrumb {
+  margin-bottom: 0;
+}
+
+.page-banner .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.page-banner .breadcrumb-item a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.page-banner .breadcrumb-item.active,
+.page-banner .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--white);
+}
+
+/* Filter Bar */
+.filter-bar {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+}
+
+.reset-link {
+  color: var(--red-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reset-link:hover {
+  color: var(--red-main);
+  text-decoration: underline;
+}
+
+/* Donor Cards */
+.donor-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.donor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.blood-group-badge {
+  background-color: var(--red-main);
+  color: var(--white);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 3rem;
+  text-align: center;
+}
+
+/* Shared Footer */
+.site-footer {
+  background-color: var(--grey-dark);
+  color: var(--white);
+}
+
+.site-footer h5 {
+  color: var(--white);
+  border-bottom: 2px solid var(--red-main);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.site-footer p,
+.site-footer li {
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+
+.site-footer a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid #3a3a3a;
+  color: #bdbdbd;
+  font-size: 0.875rem;
+}
