@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Request Details | Red Hope</title>
+
+  <!-- Google Fonts: Rajdhani for headings, Lato for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Shared Red Hope Styles -->
+  <link rel="stylesheet" href="../css/style3.css">
+</head>
+<body>
+
+  <!-- Shared Header: top helpline strip + main navigation -->
+  <header>
+    <div class="top-strip py-2">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>Helpline: <a href="tel:0511234567">051-1234567</a></span>
+        <span>Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></span>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg site-navbar py-2" aria-label="Main navigation">
+      <div class="container">
+        <!-- Brand logo and site name -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="../images/logo.jpeg" alt="Red Hope logo showing a blood drop and heart" class="navbar-logo">
+          <span class="brand-title">Red Hope</span>
+        </a>
+
+        <!-- Mobile hamburger toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links -->
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Donate</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Find Blood</a></li>
+            <li class="nav-item"><a class="nav-link" href="request-blood.html">Request Blood</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="active-requests.html">Active Requests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1 class="display-5 mb-2">Blood Request Details</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="active-requests.html">Active Requests</a></li>
+            <li class="breadcrumb-item active" aria-current="page" id="breadcrumbRequestId">Request Details</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Request Details Content Section -->
+    <section class="py-4 py-md-5">
+      <div class="container">
+
+        <!-- Error State Card (Hidden by default, shown if request not found or invalid ID) -->
+        <div id="errorState" class="text-center py-5 d-none">
+          <div class="p-4 p-md-5 bg-white rounded-3 border shadow-sm">
+            <svg width="60" height="60" fill="#E53935" viewBox="0 0 16 16" class="mb-3">
+              <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+              <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+            </svg>
+            <h3 class="h4 fw-bold text-dark mb-2" id="errorMessageTitle">Blood Request Not Found</h3>
+            <p class="text-muted mb-4" id="errorMessageText">The requested blood requisition ID is invalid or has expired.</p>
+            <a href="active-requests.html" class="btn btn-red px-4">Back to Active Requests</a>
+          </div>
+        </div>
+
+        <!-- Request Details Container (Visible when request is found) -->
+        <div id="detailsContainer" class="d-none">
+
+          <!-- Navigation & Quick Actions Bar -->
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+            <a href="active-requests.html" class="btn btn-outline-secondary d-inline-flex align-items-center gap-2">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+              </svg>
+              Back to Active Requests
+            </a>
+
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-muted small">Tracking ID:</span>
+              <span class="badge bg-dark fs-6" id="detailId">REQ-000000</span>
+            </div>
+          </div>
+
+          <div class="row g-4">
+
+            <!-- Left Main Column: Full Patient & Medical Requisition Card -->
+            <div class="col-12 col-lg-8">
+              <div class="bg-white p-4 p-md-5 rounded-3 border shadow-sm">
+
+                <!-- Header: Patient Name & Urgency Status -->
+                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3 pb-3 border-bottom">
+                  <div>
+                    <h2 class="h3 fw-bold text-dark mb-1" id="detailPatientName">Loading Patient...</h2>
+                    <p class="text-muted mb-0 small">
+                      <svg width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                      </svg>
+                      Registered: <span id="detailCreatedAt">Today</span>
+                    </p>
+                  </div>
+                  <span id="detailUrgencyBadge" class="urgency-badge urgency-urgent fs-6">
+                    Urgent
+                  </span>
+                </div>
+
+                <!-- Patient & Medical Information Grid -->
+                <h4 class="h5 fw-bold text-danger mb-3">Requisition Information</h4>
+                <div class="row g-3 mb-4">
+                  <div class="col-6 col-md-4">
+                    <div class="p-3 bg-light rounded-2 border">
+                      <div class="text-muted small mb-1">Blood Group</div>
+                      <div class="fw-bold fs-5 text-danger" id="detailBloodGroup">O+</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4">
+                    <div class="p-3 bg-light rounded-2 border">
+                      <div class="text-muted small mb-1">Required Units</div>
+                      <div class="fw-bold fs-5 text-dark" id="detailUnits">2 Bags</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4">
+                    <div class="p-3 bg-light rounded-2 border">
+                      <div class="text-muted small mb-1">Patient Age</div>
+                      <div class="fw-bold fs-5 text-dark" id="detailAge">28 Years</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4">
+                    <div class="p-3 bg-light rounded-2 border">
+                      <div class="text-muted small mb-1">Needed By Date</div>
+                      <div class="fw-bold fs-6 text-danger" id="detailRequiredDate">Nov 28, 2026</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4">
+                    <div class="p-3 bg-light rounded-2 border">
+                      <div class="text-muted small mb-1">City</div>
+                      <div class="fw-bold fs-6 text-dark" id="detailCity">Islamabad</div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-md-4">
+                    <div class="p-3 bg-light rounded-2 border">
+                      <div class="text-muted small mb-1">Current Status</div>
+                      <div class="fw-bold fs-6 text-success" id="detailStatus">Active Requisition</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Hospital & Location Details -->
+                <h4 class="h5 fw-bold text-danger mb-3">Hospital / Clinic Location</h4>
+                <div class="p-3 bg-light rounded-2 border mb-4">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <svg width="20" height="20" fill="#E53935" viewBox="0 0 16 16">
+                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                    </svg>
+                    <strong class="fs-6 text-dark" id="detailHospital">Shifa International Hospital</strong>
+                  </div>
+                  <p class="text-muted small mb-0 ps-4">
+                    Location: <span id="detailHospitalLocation">Islamabad, Pakistan</span>
+                  </p>
+                </div>
+
+                <!-- Additional Case Information / Ward Notes -->
+                <h4 class="h5 fw-bold text-danger mb-2">Additional Case Information</h4>
+                <div class="p-3 bg-light rounded-2 border">
+                  <p class="mb-0 text-secondary" id="detailNotes">No additional case information specified.</p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right Sidebar: Contact & Donate Blood Action Card -->
+            <div class="col-12 col-lg-4">
+              <div class="bg-white p-4 rounded-3 border shadow-sm sticky-top" style="top: 20px;">
+                <div class="text-center mb-4">
+                  <div class="blood-group-badge fs-2 px-3 py-2 mb-3 d-inline-block" id="sidebarBloodBadge">
+                    O+
+                  </div>
+                  <h4 class="h5 fw-bold mb-1">Can You Donate?</h4>
+                  <p class="text-muted small mb-0">Directly contact the attendant to confirm timing and hospital ward.</p>
+                </div>
+
+                <div class="border-top border-bottom py-3 mb-4">
+                  <div class="text-muted small mb-1">Verified Contact Number:</div>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <span class="fs-5 fw-bold text-dark" id="detailContactNumber">03001234567</span>
+                    <button type="button" id="copyPhoneBtn" class="btn btn-outline-secondary btn-sm" title="Copy Number">
+                      Copy
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Action Call / Donate Buttons -->
+                <div class="d-grid gap-2">
+                  <a href="#" id="callNowBtn" class="btn btn-red py-2 d-flex align-items-center justify-content-center gap-2">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                    </svg>
+                    Call Attendant Now
+                  </a>
+
+                  <button type="button" id="readyToDonateBtn" class="btn btn-outline-red py-2" data-bs-toggle="modal" data-bs-target="#donateModal">
+                    I Am Ready to Donate
+                  </button>
+
+                  <a href="active-requests.html" class="btn btn-outline-secondary py-2 mt-2">
+                    &larr; Back to Active Requests
+                  </a>
+                </div>
+
+                <!-- Emergency Reminder -->
+                <div class="mt-4 p-3 bg-light rounded-2 text-center small text-muted">
+                  <strong>Reminder:</strong> Please eat a light meal and stay well hydrated before donating blood.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Donate Blood Coordination Modal -->
+  <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title fw-bold" id="donateModalLabel">Thank You For Donating!</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="mb-3">You are stepping forward to save a life. Please coordinate directly with the patient's attendant:</p>
+          <div class="p-3 bg-light rounded-2 border mb-3">
+            <div class="small text-muted">Patient Name:</div>
+            <strong class="fs-6 text-dark" id="modalPatientName">Ali Raza</strong>
+            <div class="small text-muted mt-2">Hospital &amp; Location:</div>
+            <strong class="fs-6 text-dark" id="modalHospital">Shifa International Hospital</strong>
+            <div class="small text-muted mt-2">Contact Number:</div>
+            <strong class="fs-5 text-danger" id="modalPhone">03001234567</strong>
+          </div>
+          <p class="small text-muted mb-0">
+            Please call the attendant to inform them of your estimated arrival time at the hospital blood bank.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" id="modalCallBtn" class="btn btn-red">Call Now</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer pt-5 pb-3 mt-auto">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">About Red Hope</h5>
+          <p class="mb-0">
+            Red Hope connects voluntary blood donors with patients and hospitals across
+            Islamabad and Rawalpindi to help save lives when every minute counts.
+          </p>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Contact</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1">Phone: <a href="tel:0511234567">051-1234567</a></li>
+            <li class="mb-1">Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></li>
+            <li>Location: Islamabad &amp; Rawalpindi, Pakistan</li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="#">Home</a></li>
+            <li class="mb-1"><a href="#">Donate</a></li>
+            <li class="mb-1"><a href="#">Find Blood</a></li>
+            <li class="mb-1"><a href="request-blood.html">Request Blood</a></li>
+            <li class="mb-1"><a href="active-requests.html">Active Requests</a></li>
+            <li class="mb-1"><a href="#">Learn</a></li>
+            <li><a href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center">
+        <span>&copy; 2026 Red Hope</span>
+        <span>University IICT Project &bull; Member 3 Assignment</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Blood Request Details Script -->
+  <script src="js/blood-request-details.js"></script>
+</body>
+</html>
