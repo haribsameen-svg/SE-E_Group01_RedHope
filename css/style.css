@@ -1,55 +1,63 @@
 /* ==========================================================================
-   Red Hope - Shared Stylesheet
-   Shared colours, typography, header, footer, and reusable components
+   Red Hope - Shared Stylesheet (Preview / Base Theme)
+   Matches the classes and fonts used across shared pages (e.g. find-donor.html).
+   If integrating into your group repo, keep your team's existing style.css
+   and load donor-registration.css right after it.
    ========================================================================== */
 
 :root {
-  --red-main: #E53935;
-  --red-dark: #B71C1C;
-  --grey-dark: #222222;
-  --grey-light: #F5F5F5;
-  --white: #FFFFFF;
+  --rh-red: #E53935;
+  --rh-red-dark: #B71C1C;
+  --rh-red-soft: #FFEBEE;
+  --rh-dark: #1F2937;
+  --rh-muted: #6B7280;
+  --rh-bg: #F8F9FA;
+  --rh-border: #E5E7EB;
 }
 
-/* Base typography and page layout */
+html,
 body {
-  font-family: "Lato", sans-serif;
-  color: var(--grey-dark);
-  background-color: var(--grey-light);
+  height: 100%;
+}
+
+body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
+  font-family: 'Lato', sans-serif;
+  color: var(--rh-dark);
+  background-color: var(--rh-bg);
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6,
 .brand-title {
-  font-family: "Rajdhani", sans-serif;
+  font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
 }
 
-/* Shared Top Strip & Navbar */
+/* Top Helpline Strip */
 .top-strip {
-  background-color: var(--red-main);
-  color: var(--white);
-  font-size: 0.875rem;
+  background-color: var(--rh-red-dark);
+  color: #FFFFFF;
+  font-size: 0.9rem;
 }
 
 .top-strip a {
-  color: var(--white);
-  text-decoration: none;
-}
-
-.top-strip a:hover {
+  color: #FFFFFF;
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
+.top-strip a:hover,
+.top-strip a:focus-visible {
+  color: #FFCDD2;
+}
+
+/* Main Navigation */
 .site-navbar {
-  background-color: var(--white);
-  border-bottom: 1px solid #e0e0e0;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--rh-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .navbar-logo {
@@ -57,56 +65,38 @@ h1, h2, h3, h4, h5, h6,
   height: 42px;
   object-fit: cover;
   border-radius: 50%;
+  border: 2px solid var(--rh-red);
 }
 
 .brand-title {
-  font-size: 1.6rem;
-  color: var(--red-dark);
+  font-size: 1.65rem;
+  color: var(--rh-red);
   letter-spacing: 0.5px;
 }
 
 .site-navbar .nav-link {
-  color: var(--grey-dark);
   font-weight: 700;
+  color: var(--rh-dark);
   padding: 0.5rem 0.9rem;
+  border-radius: 0.375rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus-visible {
+  color: var(--rh-red);
+  background-color: var(--rh-red-soft);
+}
+
 .site-navbar .nav-link.active {
-  color: var(--red-main);
-}
-
-/* Shared Red Buttons */
-.btn-red {
-  background-color: var(--red-main);
-  border-color: var(--red-main);
-  color: var(--white);
-  font-weight: 700;
-}
-
-.btn-red:hover,
-.btn-red:focus {
-  background-color: var(--red-dark);
-  border-color: var(--red-dark);
-  color: var(--white);
-}
-
-.btn-outline-red {
-  color: var(--red-main);
-  border-color: var(--red-main);
-  font-weight: 700;
-}
-
-.btn-outline-red:hover,
-.btn-outline-red:focus {
-  background-color: var(--red-main);
-  color: var(--white);
+  color: #FFFFFF;
+  background-color: var(--rh-red);
 }
 
 /* Page Banner */
 .page-banner {
-  background: linear-gradient(135deg, var(--red-dark), var(--red-main));
-  color: var(--white);
+  background: linear-gradient(135deg, #B71C1C 0%, #E53935 100%);
+  color: #FFFFFF;
   padding: 2.5rem 0;
 }
 
@@ -115,92 +105,82 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .page-banner .breadcrumb-item a {
-  color: rgba(255, 255, 255, 0.85);
+  color: #FFCDD2;
   text-decoration: none;
 }
 
 .page-banner .breadcrumb-item a:hover {
-  color: var(--white);
   text-decoration: underline;
 }
 
 .page-banner .breadcrumb-item.active,
 .page-banner .breadcrumb-item + .breadcrumb-item::before {
-  color: var(--white);
+  color: #FFFFFF;
 }
 
-/* Filter Bar */
-.filter-bar {
-  background-color: var(--white);
-  border: 1px solid #e5e5e5;
-  border-radius: 0.5rem;
-}
-
-.reset-link {
-  color: var(--red-dark);
+/* Shared Buttons */
+.btn-red {
+  background-color: var(--rh-red);
+  border-color: var(--rh-red);
+  color: #FFFFFF;
   font-weight: 700;
-  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
-.reset-link:hover {
-  color: var(--red-main);
-  text-decoration: underline;
+.btn-red:hover,
+.btn-red:focus-visible {
+  background-color: var(--rh-red-dark);
+  border-color: var(--rh-red-dark);
+  color: #FFFFFF;
 }
 
-/* Donor Cards */
-.donor-card {
-  border: 1px solid #e5e5e5;
-  border-radius: 0.5rem;
-  background-color: var(--white);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.donor-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
-}
-
-.blood-group-badge {
-  background-color: var(--red-main);
-  color: var(--white);
-  font-family: "Rajdhani", sans-serif;
-  font-size: 1.1rem;
+.btn-outline-red {
+  color: var(--rh-red);
+  border-color: var(--rh-red);
   font-weight: 700;
-  min-width: 3rem;
-  text-align: center;
+}
+
+.btn-outline-red:hover,
+.btn-outline-red:focus-visible {
+  background-color: var(--rh-red);
+  border-color: var(--rh-red);
+  color: #FFFFFF;
+}
+
+/* Accessible Focus Ring */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(229, 57, 53, 0.45);
+  outline-offset: 2px;
 }
 
 /* Shared Footer */
 .site-footer {
-  background-color: var(--grey-dark);
-  color: var(--white);
-}
-
-.site-footer h5 {
-  color: var(--white);
-  border-bottom: 2px solid var(--red-main);
-  display: inline-block;
-  padding-bottom: 0.3rem;
-}
-
-.site-footer p,
-.site-footer li {
-  color: #cccccc;
+  background-color: #18181B;
+  color: #D4D4D8;
   font-size: 0.95rem;
 }
 
+.site-footer h5 {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+}
+
 .site-footer a {
-  color: #cccccc;
+  color: #FCA5A5;
   text-decoration: none;
 }
 
-.site-footer a:hover {
-  color: var(--white);
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: #FFFFFF;
   text-decoration: underline;
 }
 
 .footer-bottom {
-  border-top: 1px solid #3a3a3a;
-  color: #bdbdbd;
+  border-top: 1px solid #3F3F46;
   font-size: 0.875rem;
+  color: #A1A1AA;
 }
