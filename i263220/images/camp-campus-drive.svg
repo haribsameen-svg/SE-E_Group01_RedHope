@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b71c1c"/><stop offset="1" stop-color="#e53935"/></linearGradient></defs>
-<rect width="900" height="650" fill="#fff0f0"/><circle cx="450" cy="300" r="210" fill="url(#g)"/>
-<path d="M450 145 C410 220 330 290 330 375a120 120 0 0 0 240 0c0-85-80-155-120-230Z" fill="#fff" opacity=".96"/>
-<path d="M450 280v170M365 365h170" stroke="#b71c1c" stroke-width="32" stroke-linecap="round"/>
-<text x="450" y="585" font-family="Arial,sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#7f1717">RED HOPE • DONATE BLOOD</text>
-</svg>
