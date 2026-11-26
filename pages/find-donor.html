@@ -142,6 +142,61 @@
     </section>
   </main>
 
+  <!-- Contact Donor Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Contact Donor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4">
+          <!-- Contact Form -->
+          <form id="contactForm" novalidate>
+            <div class="mb-3">
+              <label for="senderName" class="form-label fw-bold">Your Name</label>
+              <input type="text" id="senderName" class="form-control" aria-describedby="senderNameError" required>
+              <div id="senderNameError" class="invalid-feedback" role="alert"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="senderPhone" class="form-label fw-bold">Phone Number</label>
+              <input type="tel" id="senderPhone" class="form-control" placeholder="0300-1234567"
+                     aria-describedby="senderPhoneError" required>
+              <div id="senderPhoneError" class="invalid-feedback" role="alert"></div>
+            </div>
+
+            <div class="mb-4">
+              <label for="senderMessage" class="form-label fw-bold">Message</label>
+              <textarea id="senderMessage" class="form-control" rows="3"
+                        aria-describedby="senderMessageError" required></textarea>
+              <div id="senderMessageError" class="invalid-feedback" role="alert"></div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-red">Send</button>
+            </div>
+          </form>
+
+          <!-- Success State (shown after valid form submission) -->
+          <div id="contactSuccessView" class="text-center py-3 d-none" role="status" aria-live="polite">
+            <div class="mb-3" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                <circle cx="28" cy="28" r="26" fill="#E8F5E9" stroke="#2E7D32" stroke-width="3" />
+                <path d="M18 28.5L25 35.5L39 21.5" stroke="#2E7D32" stroke-width="3.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h6 id="contactSuccessTitle" class="h4 mb-2">Request sent!</h6>
+            <p class="text-secondary mb-4">They'll contact you soon</p>
+            <button type="button" id="backToDonorsBtn" class="btn btn-red px-4">Back to donors</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Shared Footer -->
   <footer class="site-footer pt-5 pb-3 mt-auto">
     <div class="container">

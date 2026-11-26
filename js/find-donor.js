@@ -15,6 +15,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const noResultsMessage = document.getElementById("noResultsMessage");
   const resetFiltersBtn = document.getElementById("resetFiltersBtn");
 
+  // Contact modal elements
+  const contactModalEl = document.getElementById("contactModal");
+  const contactModalLabel = document.getElementById("contactModalLabel");
+  const contactForm = document.getElementById("contactForm");
+  const senderName = document.getElementById("senderName");
+  const senderPhone = document.getElementById("senderPhone");
+  const senderMessage = document.getElementById("senderMessage");
+  const senderNameError = document.getElementById("senderNameError");
+  const senderPhoneError = document.getElementById("senderPhoneError");
+  const senderMessageError = document.getElementById("senderMessageError");
+  const contactSuccessView = document.getElementById("contactSuccessView");
+  const contactSuccessTitle = document.getElementById("contactSuccessTitle");
+  const backToDonorsBtn = document.getElementById("backToDonorsBtn");
+
+  const contactModal = contactModalEl && typeof bootstrap !== "undefined"
+    ? bootstrap.Modal.getOrCreateInstance(contactModalEl)
+    : null;
+  let activeDonorName = "";
+
   // Guard against missing container or missing data array
   if (!donorGrid || typeof donors === "undefined") {
     return;
@@ -71,7 +90,83 @@ document.addEventListener("DOMContentLoaded", function () {
       resultsCount.classList.remove("d-none");
     }
 
-    renderDonorCards(donorList, donorGrid);
+    renderDonorCards(donorList, donorGrid, openContactModal);
+  }
+
+  /**
+   * Shows or clears a field's red validation error message and accessibility state.
+   */
+  function setFieldError(input, errorEl, message) {
+    if (!input || !errorEl) {
+      return;
+    }
+
+    if (message) {
+      input.classList.add("is-invalid");
+      input.setAttribute("aria-invalid", "true");
+      errorEl.textContent = message;
+    } else {
+      input.classList.remove("is-invalid");
+      input.removeAttribute("aria-invalid");
+      errorEl.textContent = "";
+    }
+  }
+
+  /**
+   * Clears the contact form inputs, validation errors, and restores the form view.
+   */
+  function resetContactModal() {
+    if (contactForm) {
+      contactForm.reset();
+      contactForm.classList.remove("d-none");
+    }
+    if (contactSuccessView) {
+      contactSuccessView.classList.add("d-none");
+    }
+    setFieldError(senderName, senderNameError, "");
+    setFieldError(senderPhone, senderPhoneError, "");
+    setFieldError(senderMessage, senderMessageError, "");
+  }
+
+  /**
+   * Opens the Bootstrap modal titled with the clicked donor's name.
+   */
+  function openContactModal(donor) {
+    if (!contactModal) {
+      return;
+    }
+
+    activeDonorName = donor.name;
+    resetContactModal();
+
+    if (contactModalLabel) {
+      contactModalLabel.textContent = `Contact ${donor.name}`;
+    }
+    contactModal.show();
+  }
+
+  /**
+   * Validates Name, Pakistani 03XX phone number, and Message before sending.
+   */
+  function validateContactForm() {
+    const nameValue = senderName ? senderName.value.trim() : "";
+    const phoneValue = senderPhone ? senderPhone.value.trim() : "";
+    const messageValue = senderMessage ? senderMessage.value.trim() : "";
+
+    // 11-digit Pakistani mobile starting with 03, optional dash after first 4 digits
+    const pakPhonePattern = /^03\d{2}-?\d{7}$/;
+
+    const nameError = nameValue ? "" : "Please enter your name";
+    const phoneError = pakPhonePattern.test(phoneValue)
+      ? ""
+      : "Enter a valid 11-digit phone number";
+    const msgError = messageValue ? "" : "Please enter a message";
+
+    setFieldError(senderName, senderNameError, nameError);
+    setFieldError(senderPhone, senderPhoneError, phoneError);
+    setFieldError(senderMessage, senderMessageError, msgError);
+
+    return !nameError && !phoneError && !msgError;
   }
 
   /**
@@ -109,6 +204,56 @@ document.addEventListener("DOMContentLoaded", function () {
     resetFiltersBtn.addEventListener("click", resetFilters);
   }
 
+  // Validate and show success state when the contact form is submitted
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!validateContactForm()) {
+        return;
+      }
+
+      contactForm.classList.add("d-none");
+      if (contactSuccessTitle) {
+        contactSuccessTitle.textContent = `Request sent to ${activeDonorName}!`;
+      }
+      if (contactSuccessView) {
+        contactSuccessView.classList.remove("d-none");
+      }
+      if (backToDonorsBtn) {
+        backToDonorsBtn.focus();
+      }
+    });
+  }
+
+  // Clear a field's error as soon as the user starts typing again
+  [
+    [senderName, senderNameError],
+    [senderPhone, senderPhoneError],
+    [senderMessage, senderMessageError]
+  ].forEach(function (pair) {
+    if (pair[0]) {
+      pair[0].addEventListener("input", function () {
+        if (pair[0].classList.contains("is-invalid")) {
+          setFieldError(pair[0], pair[1], "");
+        }
+      });
+    }
+  });
+
+  // "Back to donors" closes the modal and clears the form
+  if (backToDonorsBtn && contactModal) {
+    backToDonorsBtn.addEventListener("click", function () {
+      contactModal.hide();
+      resetContactModal();
+    });
+  }
+
+  // Also clear the form whenever the modal finishes closing (X, Esc, or backdrop)
+  if (contactModalEl) {
+    contactModalEl.addEventListener("hidden.bs.modal", resetContactModal);
+  }
+
   // Show all donors on initial page load
   showResults(donors, "", "");
 });
@@ -137,7 +282,7 @@ function formatMonthYear(dateString) {
 /**
  * Builds and appends a Bootstrap card column for each donor object.
  */
-function renderDonorCards(donorList, container) {
+function renderDonorCards(donorList, container, onContactClick) {
   container.innerHTML = "";
 
   donorList.forEach(function (donor) {
@@ -175,11 +320,16 @@ function renderDonorCards(donorList, container) {
     donationText.className = "mb-4 text-secondary";
     donationText.textContent = `Last Donation: ${formatMonthYear(donor.lastDonation)}`;
 
-    // Red Contact button (popup logic will be added in the next session)
+    // Red Contact button opens the contact modal for this donor
     const contactBtn = document.createElement("button");
     contactBtn.type = "button";
     contactBtn.className = "btn btn-red mt-auto align-self-start px-4";
     contactBtn.textContent = "Contact";
+    if (typeof onContactClick === "function") {
+      contactBtn.addEventListener("click", function () {
+        onContactClick(donor);
+      });
+    }
 
     cardBody.appendChild(headerRow);
     cardBody.appendChild(cityText);
