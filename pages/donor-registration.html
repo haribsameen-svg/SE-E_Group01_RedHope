@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donor Registration | Red Hope</title>
+
+  <!-- Google Fonts: Rajdhani for headings, Lato for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Shared Red Hope Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Donor Registration Page Styles -->
+  <style>
+    /* -------------------------------------------------------
+       Donor Registration – Page-specific Styles
+       ------------------------------------------------------- */
+
+    /* Hero section left panel */
+    .reg-hero {
+      background: linear-gradient(135deg, #B71C1C 0%, #E53935 100%);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #fff;
+      border-radius: 0;
+    }
+
+    /* Blood drop SVG wrapper */
+    .blood-drop-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.25));
+    }
+
+    .blood-drop-wrap svg.drop {
+      width: 160px;
+      height: 190px;
+      display: block;
+    }
+
+    /* White plus inside the drop */
+    .blood-drop-wrap .plus-icon {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #FFFFFF;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      pointer-events: none;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .hero-tagline {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #FFCDD2;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    /* Stats strip inside hero */
+    .hero-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat .stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: block;
+      line-height: 1;
+    }
+
+    .hero-stat .stat-label {
+      font-size: 0.75rem;
+      color: #FFCDD2;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Registration card */
+    .reg-card {
+      background: #FFFFFF;
+      border-radius: 1rem;
+      box-shadow: 0 4px 32px rgba(31, 41, 55, 0.10);
+      padding: 2.5rem 2rem;
+    }
+
+    .reg-card .reg-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--rh-red);
+      margin-bottom: 0.25rem;
+    }
+
+    .reg-card .reg-subtitle {
+      color: var(--rh-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Form label style */
+    .reg-card .form-label {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--rh-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    /* Red accent on focus */
+    .reg-card .form-control:focus,
+    .reg-card .form-select:focus {
+      border-color: var(--rh-red);
+      box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.2);
+    }
+
+    /* Invalid feedback colour tweak */
+    .reg-card .form-control.is-invalid,
+    .reg-card .form-select.is-invalid {
+      border-color: #dc3545;
+    }
+
+    /* Terms checkbox */
+    .reg-card .form-check-label {
+      font-size: 0.875rem;
+      color: var(--rh-muted);
+    }
+
+    .reg-card .form-check-input:checked {
+      background-color: var(--rh-red);
+      border-color: var(--rh-red);
+    }
+
+    /* Submit button */
+    .btn-register {
+      background: linear-gradient(90deg, #E53935 0%, #B71C1C 100%);
+      border: none;
+      color: #fff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-register:hover,
+    .btn-register:focus-visible {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      color: #fff;
+    }
+
+    /* -------------------------------------------------------
+       Success Modal custom overrides
+       ------------------------------------------------------- */
+    .modal-success .modal-header {
+      background: linear-gradient(135deg, #B71C1C 0%, #E53935 100%);
+      border-bottom: none;
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+
+    .modal-success .modal-title {
+      color: #FFFFFF;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.5rem;
+    }
+
+    .modal-success .btn-close {
+      filter: invert(1);
+    }
+
+    .modal-success .hero-icon {
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-success .modal-body {
+      padding: 2rem 1.5rem 1rem;
+      text-align: center;
+    }
+
+    .modal-success .modal-footer {
+      justify-content: center;
+      border-top: none;
+      padding-bottom: 1.5rem;
+    }
+
+    /* Section wrapper */
+    .reg-section {
+      padding: 3.5rem 0;
+      flex: 1 0 auto;
+    }
+
+    /* Responsive hero height on small screens */
+    @media (max-width: 991.98px) {
+      .reg-hero {
+        min-height: auto;
+        padding: 2.5rem 1.5rem;
+        border-radius: 1rem 1rem 0 0;
+      }
+
+      .blood-drop-wrap svg.drop {
+        width: 120px;
+        height: 143px;
+      }
+
+      .blood-drop-wrap .plus-icon {
+        font-size: 2.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       SHARED HEADER — identical to find-donor.html
+       ============================================================ -->
+  <header>
+    <div class="top-strip py-2">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>Helpline: <a href="tel:0511234567">051-1234567</a></span>
+        <span>Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></span>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg site-navbar py-2" aria-label="Main navigation">
+      <div class="container">
+        <!-- Brand logo and site name -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="../images/logo.jpeg" alt="Red Hope logo showing a blood drop and heart" class="navbar-logo">
+          <span class="brand-title">Red Hope</span>
+        </a>
+
+        <!-- Mobile hamburger toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links -->
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="donor-registration.html">Donate</a></li>
+            <li class="nav-item"><a class="nav-link" href="find-donor.html">Find Blood</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Requests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1 class="display-5 mb-2">Donor Registration</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="find-donor.html">Find Blood</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Donor Registration</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         REGISTRATION SECTION
+         Left col  → hero blood drop + tagline
+         Right col → registration form card
+         ============================================================ -->
+    <section class="reg-section">
+      <div class="container">
+        <div class="row g-0 g-lg-5 align-items-stretch">
+
+          <!-- ── LEFT: Blood Drop Hero ── -->
+          <div class="col-12 col-lg-5 mb-4 mb-lg-0">
+            <div class="reg-hero rounded-3 h-100">
+
+              <!-- Animated blood drop with white plus -->
+              <div class="blood-drop-wrap">
+                <svg class="drop" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <!-- Main blood-drop shape -->
+                  <path
+                    d="M50 5
+                       C50 5, 10 50, 10 75
+                       C10 95.7 28.4 112 50 112
+                       C71.6 112 90 95.7 90 75
+                       C90 50 50 5 50 5Z"
+                    fill="#FFFFFF"
+                    fill-opacity="0.18"
+                    stroke="#FFFFFF"
+                    stroke-width="2"
+                  />
+                  <!-- Highlight gloss -->
+                  <ellipse cx="38" cy="60" rx="8" ry="14" fill="#FFFFFF" fill-opacity="0.15" transform="rotate(-20 38 60)" />
+                </svg>
+                <!-- White plus sign centred in the drop -->
+                <span class="plus-icon" aria-hidden="true">+</span>
+              </div>
+
+              <h2 class="hero-tagline">Give Blood<br>Save Lives</h2>
+              <p class="hero-sub">Every drop counts. Register as a donor and become someone's hero today.</p>
+
+              <!-- Quick stats strip -->
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <span class="stat-num">1 Pint</span>
+                  <span class="stat-label">Can save up to</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="stat-num">3 Lives</span>
+                  <span class="stat-label">With one donation</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="stat-num">Every 2s</span>
+                  <span class="stat-label">Blood needed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── RIGHT: Registration Form ── -->
+          <div class="col-12 col-lg-7">
+            <div class="reg-card">
+              <h2 class="reg-title">Register as a Donor</h2>
+              <p class="reg-subtitle">Fill in the form below to join the Red Hope donor network.</p>
+
+              <form id="donorRegForm" novalidate>
+
+                <!-- Row 1: Full Name -->
+                <div class="mb-3">
+                  <label for="fullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="e.g. Faizan Ahmed"
+                    required
+                    minlength="3"
+                    autocomplete="name"
+                  >
+                  <div class="invalid-feedback">Please enter your full name (at least 3 characters).</div>
+                </div>
+
+                <!-- Row 2: Phone + Email (side by side on md+) -->
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="phone"
+                      name="phone"
+                      placeholder="e.g. 0300-1234567"
+                      required
+                      pattern="^(\+92[0-9]{10}|0[0-9]{10}|0[0-9]{3}-[0-9]{7})$"
+                      autocomplete="tel"
+                    >
+                    <div class="invalid-feedback">Enter a valid Pakistani phone number (e.g. 03001234567 or 0300-1234567).</div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="e.g. faizan@example.com"
+                      required
+                      autocomplete="email"
+                    >
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+                </div>
+
+                <!-- Row 3: City + Blood Group (side by side on md+) -->
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-md-6">
+                    <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                    <select class="form-select" id="city" name="city" required>
+                      <option value="" selected disabled>Select your city</option>
+                      <option value="Islamabad">Islamabad</option>
+                      <option value="Rawalpindi">Rawalpindi</option>
+                      <option value="Lahore">Lahore</option>
+                      <option value="Karachi">Karachi</option>
+                      <option value="Peshawar">Peshawar</option>
+                      <option value="Quetta">Quetta</option>
+                      <option value="Multan">Multan</option>
+                      <option value="Faisalabad">Faisalabad</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please select your city.</div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label for="bloodGroup" class="form-label">Blood Group <span class="text-danger">*</span></label>
+                    <select class="form-select" id="bloodGroup" name="bloodGroup" required>
+                      <option value="" selected disabled>Select blood group</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A−</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B−</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB−</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O−</option>
+                    </select>
+                    <div class="invalid-feedback">Please select your blood group.</div>
+                  </div>
+                </div>
+
+                <!-- Row 4: Date of Birth -->
+                <div class="mb-4">
+                  <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="dob"
+                    name="dob"
+                    required
+                    autocomplete="bday"
+                  >
+                  <div class="invalid-feedback" id="dobFeedback">Please enter your date of birth. You must be at least 18 years old to donate.</div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="termsCheck"
+                      name="termsCheck"
+                      required
+                    >
+                    <label class="form-check-label" for="termsCheck">
+                      I agree to the
+                      <a href="#" class="text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#termsModal">Terms &amp; Conditions</a>
+                      and consent to my information being used to connect me with patients in need.
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="invalid-feedback">You must agree to the Terms &amp; Conditions to register.</div>
+                  </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn-register btn">
+                  Register as a Donor
+                </button>
+
+                <p class="text-center mt-3 mb-0" style="font-size: 0.82rem; color: var(--rh-muted);">
+                  Already a donor? <a href="find-donor.html" class="text-danger fw-bold">Find Blood →</a>
+                </p>
+
+              </form>
+            </div>
+          </div>
+          <!-- end right col -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       SHARED FOOTER — identical to find-donor.html
+       ============================================================ -->
+  <footer class="site-footer pt-5 pb-3 mt-auto">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">About Red Hope</h5>
+          <p class="mb-0">
+            Red Hope connects voluntary blood donors with patients and hospitals across
+            Islamabad and Rawalpindi to help save lives when every minute counts.
+          </p>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Contact</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1">Phone: <a href="tel:0511234567">051-1234567</a></li>
+            <li class="mb-1">Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></li>
+            <li>Location: Islamabad &amp; Rawalpindi, Pakistan</li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="#">Home</a></li>
+            <li class="mb-1"><a href="donor-registration.html">Donate</a></li>
+            <li class="mb-1"><a href="find-donor.html">Find Blood</a></li>
+            <li class="mb-1"><a href="#">Requests</a></li>
+            <li class="mb-1"><a href="#">Learn</a></li>
+            <li><a href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center">
+        <span>&copy; 2026 Red Hope</span>
+        <span>Images on this website were generated using [TOOL NAME]</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SUCCESS MODAL — "Thank you for becoming our hero"
+       ============================================================ -->
+  <div class="modal fade modal-success" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-3 overflow-hidden">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">🎉 Registration Successful!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="hero-icon">🩸</div>
+          <h4 class="fw-bold mb-2" style="font-family:'Rajdhani',sans-serif; color: var(--rh-red); font-size:1.6rem;">
+            Thank you for becoming our Hero!
+          </h4>
+          <p class="text-muted mb-1">
+            Welcome to the Red Hope donor family, <strong id="successName"></strong>!
+          </p>
+          <p class="text-muted mb-0" style="font-size:0.9rem;">
+            Your details have been recorded. We will reach out when someone nearby needs your blood type.
+            Together, we save lives. ❤️
+          </p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-red px-5" data-bs-dismiss="modal">Done</button>
+          <a href="find-donor.html" class="btn btn-outline-red px-4">Find a Donor</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TERMS & CONDITIONS MODAL
+       ============================================================ -->
+  <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header" style="background: linear-gradient(135deg, #B71C1C 0%, #E53935 100%); border-bottom: none;">
+          <h5 class="modal-title text-white" id="termsModalLabel" style="font-family:'Rajdhani',sans-serif;">
+            Terms &amp; Conditions
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter:invert(1);"></button>
+        </div>
+
+        <div class="modal-body" style="font-size:0.9rem; line-height:1.7; color: var(--rh-dark);">
+          <h6 class="fw-bold">1. Eligibility</h6>
+          <p>Donors must be at least 18 years of age, weigh at least 50 kg, and be in good general health. Specific medical conditions may disqualify a donor; a Red Hope coordinator will verify eligibility before any donation session.</p>
+
+          <h6 class="fw-bold">2. Data Usage</h6>
+          <p>Your personal information (name, phone, email, city, blood group) will be stored securely and used solely to connect you with patients who need your blood type. Red Hope will never sell or share your data with third parties for commercial purposes.</p>
+
+          <h6 class="fw-bold">3. Voluntary Participation</h6>
+          <p>All blood donations arranged through Red Hope are strictly voluntary. You may withdraw your registration at any time by contacting help@redhope.pk.</p>
+
+          <h6 class="fw-bold">4. Accuracy of Information</h6>
+          <p>By submitting this form you confirm that all information provided is accurate. Providing false information may result in removal from the donor network.</p>
+
+          <h6 class="fw-bold">5. Limitation of Liability</h6>
+          <p>Red Hope acts as an intermediary platform. We do not conduct medical procedures and are not liable for any direct or indirect harm arising from donations arranged through the platform.</p>
+
+          <h6 class="fw-bold">6. Contact</h6>
+          <p class="mb-0">For questions, write to <a href="mailto:help@redhope.pk" class="text-danger">help@redhope.pk</a> or call 051-1234567.</p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-red" data-bs-dismiss="modal">I Understand</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Donor Registration Script -->
+  <script src="../js/donor-registration.js"></script>
+</body>
+</html>
