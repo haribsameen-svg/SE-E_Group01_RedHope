@@ -136,6 +136,30 @@ h1, h2, h3, h4, h5, h6,
   color: var(--white);
 }
 
+/* Directory Section Tabs (shared under banner on Donors, Blood Banks, Hospitals) */
+.directory-tabs {
+  background-color: var(--white);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.directory-tab {
+  display: inline-block;
+  padding: 0.85rem 1.15rem;
+  color: var(--grey-dark);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.directory-tab:hover {
+  color: var(--red-main);
+}
+
+.directory-tab.active {
+  color: var(--red-dark);
+  border-bottom-color: var(--red-main);
+}
+
 /* Filter Bar */
 .filter-bar {
   background-color: var(--white);
@@ -154,9 +178,10 @@ h1, h2, h3, h4, h5, h6,
   text-decoration: underline;
 }
 
-/* Donor & Blood Bank Cards */
+/* Donor, Blood Bank & Hospital Cards */
 .donor-card,
-.bank-card {
+.bank-card,
+.hospital-row {
   border: 1px solid #e5e5e5;
   border-radius: 0.5rem;
   background-color: var(--white);
@@ -164,9 +189,93 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .donor-card:hover,
-.bank-card:hover {
+.bank-card:hover,
+.hospital-row:hover {
   transform: translateY(-2px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+/* Saved Hospitals Box & Chips */
+.saved-box {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+}
+
+.saved-chip {
+  background-color: #fdecea;
+  color: var(--red-dark);
+  border: 1px solid #f5c2c0;
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.saved-chip-remove {
+  background: none;
+  border: none;
+  color: var(--red-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0 0.15rem;
+  cursor: pointer;
+}
+
+.saved-chip-remove:hover {
+  color: var(--red-main);
+}
+
+/* Hospital Emergency Badges & Save Heart Button */
+.emergency-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.65rem;
+}
+
+.emergency-yes {
+  background-color: #C62828;
+  color: var(--white);
+}
+
+.emergency-no {
+  background-color: #545454;
+  color: var(--white);
+}
+
+.hospital-phone-link {
+  color: var(--red-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hospital-phone-link:hover {
+  text-decoration: underline;
+}
+
+.heart-btn {
+  border: 1px solid #dcdcdc;
+  background-color: var(--white);
+  color: #555555;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.heart-btn:hover,
+.heart-btn:focus {
+  border-color: var(--red-main);
+  color: var(--red-main);
+}
+
+.heart-btn.saved {
+  border-color: var(--red-main);
+  background-color: #fdecea;
 }
 
 /* Blood Bank Stock Legend & Badges (accessible high-contrast colors) */
