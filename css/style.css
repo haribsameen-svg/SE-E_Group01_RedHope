@@ -154,17 +154,65 @@ h1, h2, h3, h4, h5, h6,
   text-decoration: underline;
 }
 
-/* Donor Cards */
-.donor-card {
+/* Donor & Blood Bank Cards */
+.donor-card,
+.bank-card {
   border: 1px solid #e5e5e5;
   border-radius: 0.5rem;
   background-color: var(--white);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.donor-card:hover {
+.donor-card:hover,
+.bank-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+/* Blood Bank Stock Legend & Badges (accessible high-contrast colors) */
+.stock-legend {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.status-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.7rem;
+  white-space: nowrap;
+}
+
+.status-open {
+  background-color: #2E7D32;
+  color: var(--white);
+}
+
+.status-closed {
+  background-color: #C62828;
+  color: var(--white);
+}
+
+.stock-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.65rem;
+}
+
+.stock-high {
+  background-color: #2E7D32;
+  color: var(--white);
+}
+
+.stock-ok {
+  background-color: #FFC107;
+  color: var(--grey-dark);
+}
+
+.stock-low {
+  background-color: #C62828;
+  color: var(--white);
 }
 
 .blood-group-badge {
