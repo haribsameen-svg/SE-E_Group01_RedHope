@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Red Hope — Shared Stylesheet (Islamabad & Rawalpindi)
+   Color Palette: #E53935 (Vibrant Red), #B71C1C / #8B0000 (Deep Crimson),
+                  #000000 / #121212 (Black / Charcoal), #FFFFFF / #F7F7F8
+   Typography: Rajdhani (Headings & Brand), Lato (Body & Forms)
+   ========================================================================== */
+
+:root {
+  --rh-red: #e53935;
+  --rh-red-hover: #b71c1c;
+  --rh-crimson-deep: #8b0000;
+  --rh-black: #000000;
+  --rh-charcoal: #121212;
+  --rh-surface: #ffffff;
+  --rh-surface-muted: #f7f7f8;
+  --rh-border: #e2e4e8;
+  --rh-text: #1c1e21;
+  --rh-muted: #5a6069;
+  --rh-radius: 0.75rem;
+  --rh-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --rh-transition: 0.2s ease-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--rh-text);
+  background-color: var(--rh-surface);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand-title,
+.hero-flank-text {
+  font-family: "Rajdhani", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2000;
+  background-color: var(--rh-red);
+  color: #ffffff;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Primary Vibrant Red Button (.btn-red) */
+.btn-red {
+  background-color: var(--rh-red);
+  border: 1px solid var(--rh-red);
+  color: #ffffff;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: background-color var(--rh-transition), border-color var(--rh-transition),
+    transform var(--rh-transition);
+}
+
+.btn-red:hover,
+.btn-red:focus {
+  background-color: var(--rh-red-hover);
+  border-color: var(--rh-red-hover);
+  color: #ffffff;
+}
+
+.btn-red:active {
+  transform: translateY(1px);
+}
+
+/* Shared Top Strip */
+.top-strip {
+  background-color: #b71c1c;
+  color: #ffffff;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #8b0000;
+}
+
+.top-strip a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.top-strip a:hover,
+.top-strip a:focus {
+  color: #ffebee;
+  text-decoration: underline;
+}
+
+/* Shared Navbar */
+.site-navbar {
+  background-color: var(--rh-surface);
+  border-bottom: 1px solid var(--rh-border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--rh-red);
+  background-color: #ffffff;
+}
+
+.brand-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--rh-black);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.site-navbar .nav-link {
+  color: var(--rh-text);
+  font-weight: 700;
+  font-size: 0.94rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.4rem;
+  transition: color var(--rh-transition), background-color var(--rh-transition);
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus {
+  color: var(--rh-red);
+  background-color: rgba(229, 57, 53, 0.08);
+}
+
+.site-navbar .nav-link.active {
+  color: #ffffff;
+  background-color: var(--rh-red);
+}
+
+/* Homepage Hero Banner */
+.hero-banner {
+  background: radial-gradient(circle at center, rgba(139, 0, 0, 0.55) 0%, #121212 52%, #000000 100%);
+  color: #ffffff;
+  padding: 4.25rem 0;
+  border-bottom: 4px solid var(--rh-red);
+}
+
+.hero-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.hero-flank-text {
+  font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+.hero-flank-accent {
+  color: var(--rh-red);
+}
+
+.hero-logo-frame {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  padding: 10px;
+  background: radial-gradient(circle, #1a0505 0%, #000000 72%);
+  border: 4px solid var(--rh-red);
+  box-shadow: 0 0 0 8px rgba(183, 28, 28, 0.25), 0 18px 40px rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Sections & Why Red Hope */
+.section-padded {
+  padding: 4rem 0;
+}
+
+.section-surface-muted {
+  background-color: var(--rh-surface-muted);
+}
+
+.section-heading {
+  font-weight: 700;
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+  color: var(--rh-charcoal);
+}
+
+.why-card {
+  background-color: var(--rh-surface);
+  border: 1px solid var(--rh-border);
+  border-top: 4px solid var(--rh-red);
+  border-radius: var(--rh-radius);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--rh-shadow);
+  height: 100%;
+}
+
+.why-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgba(229, 57, 53, 0.1);
+  color: var(--rh-red);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Shared Filter Bar & Eligibility Checker Card (.filter-bar) */
+.filter-bar {
+  background-color: var(--rh-surface);
+  border: 1px solid var(--rh-border);
+  border-left: 5px solid var(--rh-red);
+  border-radius: var(--rh-radius);
+  padding: 1.75rem;
+  box-shadow: var(--rh-shadow);
+}
+
+.filter-bar .form-label {
+  font-weight: 700;
+  color: var(--rh-charcoal);
+  font-size: 0.9rem;
+}
+
+.filter-bar .form-control:focus,
+.filter-bar .form-select:focus {
+  border-color: var(--rh-red);
+  box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.2);
+}
+
+/* Subpage Banner & Donor Directory Cards */
+.page-banner {
+  background: linear-gradient(135deg, var(--rh-black) 0%, #240808 65%, var(--rh-crimson-deep) 100%);
+  color: #ffffff;
+  padding: 2.75rem 0;
+  border-bottom: 4px solid var(--rh-red);
+}
+
+.donor-card {
+  background-color: var(--rh-surface);
+  border: 1px solid var(--rh-border);
+  border-radius: var(--rh-radius);
+  padding: 1.25rem;
+  box-shadow: var(--rh-shadow);
+  height: 100%;
+}
+
+.blood-group-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 52px;
+  border-radius: 0.65rem;
+  background-color: rgba(229, 57, 53, 0.1);
+  border: 1px solid rgba(229, 57, 53, 0.35);
+  color: var(--rh-red-hover);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+/* Shared Footer */
+.site-footer {
+  background-color: var(--rh-charcoal);
+  color: #d1d5db;
+  border-top: 4px solid var(--rh-red);
+}
+
+.site-footer h5,
+.site-footer h6 {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.site-footer a {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color var(--rh-transition);
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--rh-red);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .hero-stage {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-logo-frame {
+    width: 175px;
+    height: 175px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-banner {
+    padding: 3rem 0;
+  }
+
+  .section-padded {
+    padding: 3rem 0;
+  }
+
+  .filter-bar {
+    padding: 1.25rem;
+  }
+}
