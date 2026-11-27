@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donor Profile | Red Hope</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Shared Red Hope Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       SHARED HEADER
+       ============================================================ -->
+  <header>
+    <div class="top-strip py-2">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>Helpline: <a href="tel:0511234567">051-1234567</a></span>
+        <span>Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></span>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg site-navbar py-2" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="../images/logo.jpeg" alt="Red Hope logo showing a blood drop and heart" class="navbar-logo">
+          <span class="brand-title">Red Hope</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="donor-registration.html">Donate</a></li>
+            <li class="nav-item"><a class="nav-link" href="find-donor.html">Find Blood</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Requests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="donor-profile.html">My Profile</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1 class="display-5 mb-2">Donor Profile</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="donor-registration.html">Donate</a></li>
+            <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROFILE SECTION
+         ============================================================ -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+
+          <!-- ══════════════════════════════════════════════════════
+               LEFT — Profile Card
+               ══════════════════════════════════════════════════════ -->
+          <div class="col-12 col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100 d-flex flex-column align-items-center text-center bg-white">
+
+              <!-- Avatar -->
+              <div class="rounded-circle bg-danger bg-gradient text-white d-flex align-items-center justify-content-center mb-3 border border-4 border-danger-subtle shadow-sm position-relative overflow-hidden flex-shrink-0"
+                   id="avatarWrap" role="button" tabindex="0" title="Click to change photo">
+                <img id="avatarImg" src="" alt="Donor profile photo" class="d-none w-100 h-100 object-fit-cover">
+                <span class="fs-1 fw-bold user-select-none" id="avatarInitials">FA</span>
+                <div id="avatarOverlay" class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex flex-column align-items-center justify-content-center text-white opacity-0">
+                  <i class="bi bi-camera-fill fs-5"></i>
+                  <span class="small">Change Photo</span>
+                </div>
+              </div>
+              <input type="file" id="avatarInput" accept="image/*" class="d-none">
+
+              <!-- Name -->
+              <h2 class="h3 fw-bold text-dark mb-2" id="profileName">Faizan Ahmed</h2>
+
+              <!-- Blood group badge -->
+              <span class="badge bg-danger fs-6 px-3 py-2 mb-3" id="profileBloodGroup">O+</span>
+
+              <!-- Availability badge -->
+              <span class="badge rounded-pill bg-success-subtle text-success px-3 py-2 mb-3" id="profileAvailBadge">
+                <i class="bi bi-check-circle-fill me-1"></i> Available to Donate
+              </span>
+
+              <!-- Detail rows -->
+              <div class="w-100 text-start border-top pt-3 mt-auto">
+                <div class="d-flex align-items-start gap-2 py-2 border-bottom">
+                  <i class="bi bi-envelope-fill text-danger mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="d-block text-uppercase text-muted fw-bold small">Email</span>
+                    <span class="d-block text-dark" id="profileEmail">faizan@example.com</span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start gap-2 py-2 border-bottom">
+                  <i class="bi bi-telephone-fill text-danger mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="d-block text-uppercase text-muted fw-bold small">Phone Number</span>
+                    <span class="d-block text-dark" id="profilePhone">0300-1234567</span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start gap-2 py-2 border-bottom">
+                  <i class="bi bi-geo-alt-fill text-danger mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="d-block text-uppercase text-muted fw-bold small">City</span>
+                    <span class="d-block text-dark" id="profileCity">Islamabad</span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start gap-2 py-2 border-bottom">
+                  <i class="bi bi-calendar2-check-fill text-danger mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="d-block text-uppercase text-muted fw-bold small">Joining Date</span>
+                    <span class="d-block text-dark" id="profileJoining">November 2026</span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start gap-2 pt-2">
+                  <i class="bi bi-droplet-half text-danger mt-1 flex-shrink-0"></i>
+                  <div>
+                    <span class="d-block text-uppercase text-muted fw-bold small">Blood Group</span>
+                    <span class="d-block text-dark" id="profileBloodGroupDetail">O+ (O Positive)</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- end left col -->
+
+          <!-- ══════════════════════════════════════════════════════
+               RIGHT — Stats + History + Message
+               ══════════════════════════════════════════════════════ -->
+          <div class="col-12 col-lg-8">
+            <div class="d-flex flex-column gap-3 h-100">
+
+              <!-- ── Row 1: 3 Stat Cards ── -->
+              <div class="row g-3">
+
+                <!-- Total Donations -->
+                <div class="col-12 col-sm-4">
+                  <div class="card border-0 border-top border-4 border-danger shadow-sm rounded-4 p-3 text-center h-100 bg-white">
+                    <i class="bi bi-droplet-fill fs-3 text-danger mb-1 d-block"></i>
+                    <span class="fs-2 fw-bold text-dark d-block" id="statTotal">6</span>
+                    <span class="text-uppercase text-muted small fw-bold d-block">Total Donations</span>
+                  </div>
+                </div>
+
+                <!-- Availability -->
+                <div class="col-12 col-sm-4">
+                  <div class="card border-0 border-top border-4 border-success shadow-sm rounded-4 p-3 text-center h-100 bg-white"
+                       id="statAvailCard" role="button" tabindex="0" title="Click to toggle availability On / Off">
+                    <i class="bi bi-heart-pulse-fill fs-3 text-success mb-1 d-block" id="statAvailIcon"></i>
+                    <span class="fs-2 fw-bold text-success d-block" id="statAvail">On</span>
+                    <span class="text-uppercase text-muted small fw-bold d-block">Availability (Click to Toggle)</span>
+                  </div>
+                </div>
+
+                <!-- Next Eligible -->
+                <div class="col-12 col-sm-4">
+                  <div class="card border-0 border-top border-4 border-danger shadow-sm rounded-4 p-3 text-center h-100 bg-white">
+                    <i class="bi bi-calendar-event-fill fs-3 text-danger mb-1 d-block"></i>
+                    <span class="fs-4 fw-bold text-dark d-block" id="statNextEligible">Jan 2027</span>
+                    <span class="text-uppercase text-muted small fw-bold d-block">Next Eligible Date</span>
+                  </div>
+                </div>
+
+              </div>
+              <!-- end stat row -->
+
+              <!-- ── Row 2: Donation History ── -->
+              <div class="card border-0 shadow-sm rounded-4 p-4 bg-white flex-grow-1 d-flex flex-column">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                  <h3 class="h5 fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                    <i class="bi bi-clock-history text-danger"></i>
+                    Donation History
+                  </h3>
+                  <!-- Single button: Add / Edit Log -->
+                  <button class="btn btn-red d-flex align-items-center gap-2 px-3 py-2"
+                          id="btnAddLog" data-bs-toggle="modal" data-bs-target="#logModal">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Add / Edit Log
+                  </button>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle mb-0" id="historyTable">
+                    <thead class="table-danger">
+                      <tr>
+                        <th><i class="bi bi-calendar3 me-1"></i>Date</th>
+                        <th><i class="bi bi-droplet me-1"></i>Blood Group</th>
+                        <th><i class="bi bi-geo-alt me-1"></i>Location</th>
+                        <th class="text-end">Edit</th>
+                      </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                      <!-- Populated by donor-profile.js -->
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Empty state (shown when no logs) -->
+                <div id="historyEmpty" class="text-center py-4 text-muted d-none my-auto">
+                  <i class="bi bi-clipboard2-x fs-1 text-secondary"></i>
+                  <p class="mb-0 mt-2 small">No donation logs yet. Click <strong>Add / Edit Log</strong> to record your first donation.</p>
+                </div>
+              </div>
+              <!-- end history card -->
+
+              <!-- ── Row 3: Hero Message ── -->
+              <div class="card border-0 shadow-sm rounded-4 p-4 bg-danger bg-gradient text-white">
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start">
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="fs-1 lh-1">🩸</span>
+                    <div>
+                      <h3 class="h4 fw-bold mb-1">Thank You for being our Hero</h3>
+                      <p class="mb-0 small text-white-50">Your generosity gives others a second chance at life. Red Hope is proud to have you in our community.</p>
+                    </div>
+                  </div>
+                  <div class="text-md-end flex-shrink-0">
+                    <span class="fs-2 fw-bold lh-1 d-block">3 Lives</span>
+                    <span class="small text-white-50 d-block mt-1">Your Donation can save up to 3 lives</span>
+                  </div>
+                </div>
+              </div>
+              <!-- end message card -->
+
+            </div>
+          </div>
+          <!-- end right col -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       SHARED FOOTER
+       ============================================================ -->
+  <footer class="site-footer pt-5 pb-3 mt-auto">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">About Red Hope</h5>
+          <p class="mb-0">
+            Red Hope connects voluntary blood donors with patients and hospitals across
+            Islamabad and Rawalpindi to help save lives when every minute counts.
+          </p>
+        </div>
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Contact</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1">Phone: <a href="tel:0511234567">051-1234567</a></li>
+            <li class="mb-1">Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></li>
+            <li>Location: Islamabad &amp; Rawalpindi, Pakistan</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="#">Home</a></li>
+            <li class="mb-1"><a href="donor-registration.html">Donate</a></li>
+            <li class="mb-1"><a href="find-donor.html">Find Blood</a></li>
+            <li class="mb-1"><a href="#">Requests</a></li>
+            <li class="mb-1"><a href="#">Learn</a></li>
+            <li><a href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center">
+        <span>&copy; 2026 Red Hope</span>
+        <span>Images on this website were generated using [TOOL NAME]</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       ADD / EDIT LOG MODAL
+       ============================================================ -->
+  <div class="modal fade" id="logModal" tabindex="-1"
+       aria-labelledby="logModalLabel" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-3 overflow-hidden">
+
+        <div class="modal-header bg-danger text-white border-0">
+          <h5 class="modal-title" id="logModalLabel">
+            <i class="bi bi-plus-circle-fill me-2"></i>Add Donation Log
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body px-4 py-3">
+          <form id="logForm" novalidate>
+            <!-- Hidden: row index for edit mode -->
+            <input type="hidden" id="logEditIndex" value="-1">
+
+            <!-- Date -->
+            <div class="mb-3">
+              <label for="logDate" class="form-label fw-bold small">
+                Donation Date <span class="text-danger">*</span>
+              </label>
+              <input type="date" class="form-control" id="logDate" required>
+              <div class="invalid-feedback">Please select the donation date.</div>
+            </div>
+
+            <!-- Blood Group -->
+            <div class="mb-3">
+              <label for="logBloodGroup" class="form-label fw-bold small">
+                Blood Group <span class="text-danger">*</span>
+              </label>
+              <select class="form-select" id="logBloodGroup" required>
+                <option value="" disabled selected>Select blood group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A−</option>
+                <option value="B+">B+</option>
+                <option value="B-">B−</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB−</option>
+                <option value="O+">O+</option>
+                <option value="O-">O−</option>
+              </select>
+              <div class="invalid-feedback">Please select a blood group.</div>
+            </div>
+
+            <!-- Location -->
+            <div class="mb-2">
+              <label for="logLocation" class="form-label fw-bold small">
+                Location / Hospital <span class="text-danger">*</span>
+              </label>
+              <input type="text" class="form-control" id="logLocation"
+                     placeholder="e.g. PIMS Blood Bank, Islamabad" required minlength="3">
+              <div class="invalid-feedback">Please enter the donation location.</div>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer border-top-0 px-4 pb-4 gap-2">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-red px-4" id="btnSaveLog">
+            <i class="bi bi-check2-circle me-1"></i> Save Log
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Donor Profile Script -->
+  <script src="../js/donor-profile.js"></script>
+</body>
+</html>

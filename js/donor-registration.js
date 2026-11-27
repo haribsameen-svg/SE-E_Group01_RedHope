@@ -101,13 +101,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ── Collect data ─────────────────────────────────────────────────────
     const data = {
-      fullName:   document.getElementById("fullName").value.trim(),
-      phone:      document.getElementById("phone").value.trim(),
-      email:      document.getElementById("email").value.trim(),
-      city:       document.getElementById("city").value,
-      bloodGroup: document.getElementById("bloodGroup").value,
-      dob:        document.getElementById("dob").value
+      fullName:    document.getElementById("fullName").value.trim(),
+      phone:       document.getElementById("phone").value.trim(),
+      email:       document.getElementById("email").value.trim(),
+      city:        document.getElementById("city").value,
+      bloodGroup:  document.getElementById("bloodGroup").value,
+      dob:         document.getElementById("dob").value,
+      joiningDate: new Date().toISOString().split("T")[0],
+      available:   true
     };
+
+    try {
+      localStorage.setItem("rh_registered_donor", JSON.stringify(data));
+      localStorage.setItem("rh_donation_logs", JSON.stringify([]));
+      localStorage.removeItem("rh_donor_avatar");
+    } catch (_) { /* storage unavailable */ }
 
     console.log("Red Hope — New donor registered:", data);
     // TODO: POST to real API when backend is ready.
