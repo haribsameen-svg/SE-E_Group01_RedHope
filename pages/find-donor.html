@@ -44,12 +44,14 @@
         <!-- Navigation links -->
         <div class="collapse navbar-collapse justify-content-end" id="mainNav">
           <ul class="navbar-nav align-items-lg-center gap-lg-1">
-            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Donate</a></li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="find-donor.html">Find Blood</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Requests</a></li>
+            <li class="nav-item"><a class="nav-link" href="events.html">Camps &amp; Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="volunteer.html">Volunteer</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+            <li class="nav-item"><a class="nav-link" href="stories.html">Stories</a></li>
           </ul>
         </div>
       </div>
@@ -69,6 +71,15 @@
         </nav>
       </div>
     </section>
+
+    <!-- Directory Section Tabs -->
+    <nav class="directory-tabs" aria-label="Directory sections">
+      <div class="container d-flex flex-wrap gap-2">
+        <a class="directory-tab active" aria-current="page" href="find-donor.html">Donors</a>
+        <a class="directory-tab" href="blood-banks.html">Blood Banks</a>
+        <a class="directory-tab" href="hospitals.html">Hospitals</a>
+      </div>
+    </nav>
 
     <!-- Filter Bar & Donor Directory -->
     <section class="py-4 py-md-5">
@@ -106,11 +117,20 @@
                   <option value="">All Cities</option>
                   <option value="Islamabad">Islamabad</option>
                   <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Murree">Murree</option>
                 </select>
               </div>
 
               <div class="col-12 col-md-4 d-flex align-items-center gap-3">
-                <button type="button" id="searchBtn" class="btn btn-red px-4">Search</button>
+                <!-- Larger Search button with inline magnifying glass SVG so it stands out -->
+                <button type="button" id="searchBtn" class="btn btn-red btn-search d-inline-flex align-items-center gap-2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <span>Search</span>
+                </button>
                 <a href="#" id="resetLink" class="reset-link">Reset</a>
               </div>
             </form>
@@ -118,11 +138,20 @@
         </div>
 
         <!-- Section Title with small red blood drop icon -->
-        <div class="d-flex align-items-center gap-2 mb-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
           <svg width="20" height="24" viewBox="0 0 24 28" fill="#E53935" aria-hidden="true">
             <path d="M12 1.5C12 1.5 2 12.2 2 18.5C2 23.8 6.5 27.5 12 27.5C17.5 27.5 22 23.8 22 18.5C22 12.2 12 1.5 12 1.5Z" />
           </svg>
           <h2 class="h3 mb-0">Available Donors</h2>
+        </div>
+
+        <!-- Results Count -->
+        <p id="resultsCount" class="text-secondary fw-bold mb-3" aria-live="polite"></p>
+
+        <!-- No Results Message (shown only when no donors match) -->
+        <div id="noResultsBox" class="filter-bar text-center p-4 p-md-5 d-none" role="status">
+          <p id="noResultsMessage" class="fs-5 mb-3"></p>
+          <button type="button" id="resetFiltersBtn" class="btn btn-outline-red px-4">Reset filters</button>
         </div>
 
         <!-- Donor Cards Grid (populated by js/find-donor.js) -->
@@ -131,6 +160,61 @@
       </div>
     </section>
   </main>
+
+  <!-- Contact Donor Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Contact Donor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4">
+          <!-- Contact Form -->
+          <form id="contactForm" novalidate>
+            <div class="mb-3">
+              <label for="senderName" class="form-label fw-bold">Your Name</label>
+              <input type="text" id="senderName" class="form-control" aria-describedby="senderNameError" required>
+              <div id="senderNameError" class="invalid-feedback" role="alert"></div>
+            </div>
+
+            <div class="mb-3">
+              <label for="senderPhone" class="form-label fw-bold">Phone Number</label>
+              <input type="tel" id="senderPhone" class="form-control" placeholder="0300-1234567"
+                     aria-describedby="senderPhoneError" required>
+              <div id="senderPhoneError" class="invalid-feedback" role="alert"></div>
+            </div>
+
+            <div class="mb-4">
+              <label for="senderMessage" class="form-label fw-bold">Message</label>
+              <textarea id="senderMessage" class="form-control" rows="3"
+                        aria-describedby="senderMessageError" required></textarea>
+              <div id="senderMessageError" class="invalid-feedback" role="alert"></div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-red">Send</button>
+            </div>
+          </form>
+
+          <!-- Success State (shown after valid form submission) -->
+          <div id="contactSuccessView" class="text-center py-3 d-none" role="status" aria-live="polite">
+            <div class="mb-3" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                <circle cx="28" cy="28" r="26" fill="#E8F5E9" stroke="#2E7D32" stroke-width="3" />
+                <path d="M18 28.5L25 35.5L39 21.5" stroke="#2E7D32" stroke-width="3.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h6 id="contactSuccessTitle" class="h4 mb-2">Request sent!</h6>
+            <p class="text-secondary mb-4">They'll contact you soon</p>
+            <button type="button" id="backToDonorsBtn" class="btn btn-red px-4">Back to donors</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Shared Footer -->
   <footer class="site-footer pt-5 pb-3 mt-auto">
@@ -156,19 +240,21 @@
         <div class="col-12 col-md-4">
           <h5 class="mb-3">Quick Links</h5>
           <ul class="list-unstyled mb-0">
-            <li class="mb-1"><a href="#">Home</a></li>
+            <li class="mb-1"><a href="../index.html">Home</a></li>
             <li class="mb-1"><a href="#">Donate</a></li>
             <li class="mb-1"><a href="find-donor.html">Find Blood</a></li>
             <li class="mb-1"><a href="#">Requests</a></li>
+            <li class="mb-1"><a href="events.html">Camps &amp; Events</a></li>
+            <li class="mb-1"><a href="volunteer.html">Volunteer</a></li>
             <li class="mb-1"><a href="#">Learn</a></li>
-            <li><a href="#">Stories</a></li>
+            <li><a href="stories.html">Stories</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center">
         <span>&copy; 2026 Red Hope</span>
-        <span>Images on this website were generated using [TOOL NAME]</span>
+        <span>Images on this website were generated using Gemini</span>
       </div>
     </div>
   </footer>
