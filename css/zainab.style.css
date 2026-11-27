@@ -1,0 +1,414 @@
+:root {
+  --red-main: #E53935;
+  --red-dark: #B71C1C;
+  --red-soft: #FFEBEE;
+  --grey-dark: #222222;
+  --grey-mid: #555555;
+  --grey-light: #F5F5F5;
+  --white: #FFFFFF;
+}
+body {
+  font-family: "Lato", sans-serif;
+  color: var(--grey-dark);
+  background-color: var(--grey-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+h1, h2, h3, h4, h5, h6,
+.brand-title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+}
+.top-strip {
+  background-color: var(--red-main);
+  color: var(--white);
+  font-size: 0.875rem;
+}
+.top-strip a {
+  color: var(--white);
+  text-decoration: none;
+}
+.top-strip a:hover {
+  text-decoration: underline;
+}
+.site-navbar {
+  background-color: var(--white);
+  border-bottom: 1px solid #e0e0e0;
+}
+.navbar-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.brand-title {
+  font-size: 1.6rem;
+  color: var(--red-dark);
+  letter-spacing: 0.5px;
+}
+.site-navbar .nav-link {
+  color: var(--grey-dark);
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+}
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+  color: var(--red-main);
+}
+.btn-red {
+  background-color: var(--red-main);
+  border-color: var(--red-main);
+  color: var(--white);
+  font-weight: 700;
+}
+.btn-red:hover,
+.btn-red:focus {
+  background-color: var(--red-dark);
+  border-color: var(--red-dark);
+  color: var(--white);
+}
+.btn-outline-red {
+  color: var(--red-main);
+  border-color: var(--red-main);
+  font-weight: 700;
+}
+.btn-outline-red:hover,
+.btn-outline-red:focus {
+  background-color: var(--red-main);
+  color: var(--white);
+}
+.page-banner {
+  background: linear-gradient(135deg, var(--red-dark), var(--red-main));
+  color: var(--white);
+  padding: 2.5rem 0;
+}
+.page-banner .breadcrumb {
+  margin-bottom: 0;
+}
+.page-banner .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+.page-banner .breadcrumb-item a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+.page-banner .breadcrumb-item.active,
+.page-banner .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--white);
+}
+.section-heading-wrap {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+.section-heading-wrap h2 {
+  font-size: 2.15rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.heading-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.5rem auto 0.75rem;
+}
+.heading-divider .divider-line {
+  width: 48px;
+  height: 2px;
+  background-color: var(--red-main);
+}
+.section-subtitle {
+  color: var(--grey-mid);
+  max-width: 650px;
+  margin: 0 auto;
+}
+.filter-bar {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+}
+.reset-link {
+  color: var(--red-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+.reset-link:hover {
+  color: var(--red-main);
+  text-decoration: underline;
+}
+.donor-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.donor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+.blood-group-badge {
+  background-color: var(--red-main);
+  color: var(--white);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 3rem;
+  text-align: center;
+}
+.stat-card {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-top: 4px solid var(--red-main);
+  border-radius: 0.5rem;
+  padding: 1.35rem 1rem;
+  text-align: center;
+}
+.stat-number {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--red-dark);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 0.92rem;
+  color: var(--grey-mid);
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+.featured-story-card {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-left: 5px solid var(--red-main);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.featured-story-visual {
+  background: linear-gradient(145deg, var(--red-dark), var(--red-main));
+  color: var(--white);
+  min-height: 260px;
+  position: relative;
+}
+.featured-story-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+.story-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.story-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+.category-badge {
+  background-color: var(--red-soft);
+  color: var(--red-dark);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.story-quote {
+  border-left: 3px solid var(--red-main);
+  padding-left: 0.85rem;
+  color: var(--grey-mid);
+  font-style: italic;
+}
+.story-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--red-dark);
+  color: var(--white);
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+    justify-content: center;
+  flex-shrink: 0;
+}
+.story-avatar-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid var(--red-main);
+  flex-shrink: 0;
+}
+.story-card-photo {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  display: block;
+}
+.campaign-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.campaign-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+.campaign-thumb {
+  min-height: 230px;
+  height: 100%;
+  background-color: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+.campaign-img {
+  width: 100%;
+  height: 100%;
+  min-height: 230px;
+  object-fit: cover;
+  display: block;
+}
+.campaign-city-tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+}
+.campaign-date-badge {
+  display: inline-block;
+  background-color: var(--grey-dark);
+  color: var(--white);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 0.3rem 0.75rem;
+  text-transform: uppercase;
+}
+.campaign-title {
+  color: var(--red-main);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.campaign-meta {
+  font-size: 0.875rem;
+  color: var(--grey-mid);
+  border-top: 1px solid #eeeeee;
+  padding-top: 0.75rem;
+}
+.status-badge-upcoming {
+  background-color: #E8F5E9;
+  color: #1B5E20;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.status-badge-urgent {
+  background-color: var(--red-soft);
+  color: var(--red-dark);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.status-badge-completed {
+  background-color: #EEEEEE;
+  color: #555555;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+.role-card {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  padding: 1.35rem;
+  height: 100%;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.role-card:hover {
+  border-color: var(--red-main);
+  transform: translateY(-2px);
+}
+.role-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  background-color: var(--red-soft);
+  color: var(--red-main);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.9rem;
+}
+.volunteer-form-card {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-top: 4px solid var(--red-main);
+  border-radius: 0.5rem;
+}
+.volunteer-hero-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+.confirmation-card {
+  background-color: var(--white);
+  border: 1px solid #c8e6c9;
+  border-left: 5px solid #2e7d32;
+  border-radius: 0.5rem;
+}
+.volunteer-chip {
+  background-color: var(--grey-light);
+  border: 1px solid #e0e0e0;
+  border-radius: 0.45rem;
+  padding: 0.75rem 1rem;
+}
+/* Form Focus Accent */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--red-main);
+  box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.18);
+}
+/* Shared Footer */
+.site-footer {
+  background-color: var(--grey-dark);
+  color: var(--white);
+}
+.site-footer h5 {
+  color: var(--white);
+  border-bottom: 2px solid var(--red-main);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+.site-footer p,
+.site-footer li {
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+.site-footer a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+.footer-bottom {
+  border-top: 1px solid #3a3a3a;
+  color: #bdbdbd;
+  font-size: 0.875rem;
+}
