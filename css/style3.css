@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Red Hope - Shared Stylesheet (style3.css)
+   Shared colours, typography, header, footer, and reusable components
+   ========================================================================== */
+
+:root {
+  --red-main: #E53935;
+  --red-dark: #B71C1C;
+  --grey-dark: #222222;
+  --grey-light: #F5F5F5;
+  --white: #FFFFFF;
+  --border-color: #e5e5e5;
+  --text-muted: #6c757d;
+}
+
+/* Base typography and page layout */
+body {
+  font-family: "Lato", sans-serif;
+  color: var(--grey-dark);
+  background-color: var(--grey-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6,
+.brand-title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+}
+
+/* Shared Top Strip & Navbar */
+.top-strip {
+  background-color: var(--red-main);
+  color: var(--white);
+  font-size: 0.875rem;
+}
+
+.top-strip a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.top-strip a:hover {
+  text-decoration: underline;
+}
+
+.site-navbar {
+  background-color: var(--white);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.brand-title {
+  font-size: 1.6rem;
+  color: var(--red-dark);
+  letter-spacing: 0.5px;
+}
+
+.site-navbar .nav-link {
+  color: var(--grey-dark);
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+  color: var(--red-main);
+}
+
+/* Shared Red Buttons */
+.btn-red {
+  background-color: var(--red-main);
+  border-color: var(--red-main);
+  color: var(--white);
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-red:hover,
+.btn-red:focus {
+  background-color: var(--red-dark);
+  border-color: var(--red-dark);
+  color: var(--white);
+}
+
+.btn-outline-red {
+  color: var(--red-main);
+  border-color: var(--red-main);
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-red:hover,
+.btn-outline-red:focus {
+  background-color: var(--red-main);
+  color: var(--white);
+}
+
+/* Page Banner */
+.page-banner {
+  background: linear-gradient(135deg, var(--red-dark), var(--red-main));
+  color: var(--white);
+  padding: 2.5rem 0;
+}
+
+.page-banner .breadcrumb {
+  margin-bottom: 0;
+}
+
+.page-banner .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.page-banner .breadcrumb-item a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.page-banner .breadcrumb-item.active,
+.page-banner .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--white);
+}
+
+/* Filter Bar */
+.filter-bar {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+}
+
+.reset-link {
+  color: var(--red-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reset-link:hover {
+  color: var(--red-main);
+  text-decoration: underline;
+}
+
+/* Reusable Cards & Request Cards */
+.request-card,
+.donor-card {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.request-card:hover,
+.donor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.blood-group-badge {
+  background-color: var(--red-main);
+  color: var(--white);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  min-width: 3.2rem;
+  text-align: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.35rem;
+  display: inline-block;
+}
+
+/* Urgency Badges */
+.urgency-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 50rem;
+}
+
+.urgency-urgent {
+  background-color: #fee2e2;
+  color: var(--red-dark);
+  border: 1px solid #fca5a5;
+}
+
+.urgency-moderate {
+  background-color: #ffedd5;
+  color: #c2410c;
+  border: 1px solid #fdba74;
+}
+
+.urgency-normal {
+  background-color: #ecfdf5;
+  color: #047857;
+  border: 1px solid #6ee7b7;
+}
+
+/* Request Form Card & Form Elements */
+.request-form-card {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.04);
+}
+
+.form-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--grey-dark);
+  margin-bottom: 0.35rem;
+}
+
+.required {
+  color: var(--red-main);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--red-main);
+  box-shadow: 0 0 0 0.25rem rgba(229, 57, 53, 0.2);
+}
+
+/* Section Header Decoration */
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title-wrap svg {
+  flex-shrink: 0;
+}
+
+/* Shared Footer */
+.site-footer {
+  background-color: var(--grey-dark);
+  color: var(--white);
+}
+
+.site-footer h5 {
+  color: var(--white);
+  border-bottom: 2px solid var(--red-main);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  font-size: 1.25rem;
+}
+
+.site-footer p,
+.site-footer li {
+  color: #cccccc;
+  font-size: 0.95rem;
+}
+
+.site-footer a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+.site-footer a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid #3a3a3a;
+  color: #bdbdbd;
+  font-size: 0.875rem;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Blood | Red Hope</title>
+
+  <!-- Google Fonts: Rajdhani for headings, Lato for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Shared Red Hope Styles -->
+  <link rel="stylesheet" href="../css/style3.css">
+</head>
+<body>
+
+  <!-- Shared Header: top helpline strip + main navigation -->
+  <header>
+    <div class="top-strip py-2">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>Helpline: <a href="tel:0511234567">051-1234567</a></span>
+        <span>Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></span>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg site-navbar py-2" aria-label="Main navigation">
+      <div class="container">
+        <!-- Brand logo and site name -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="../images/logo.jpeg" alt="Red Hope logo showing a blood drop and heart" class="navbar-logo">
+          <span class="brand-title">Red Hope</span>
+        </a>
+
+        <!-- Mobile hamburger toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links -->
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Donate</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Find Blood</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="request-blood.html">Request Blood</a></li>
+            <li class="nav-item"><a class="nav-link" href="active-requests.html">Active Requests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1 class="display-5 mb-2">Request Blood</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Request Blood</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Main Content: Request Form Section -->
+    <section class="py-4 py-md-5">
+      <div class="container">
+
+        <!-- Section Title with Red Blood Drop Icon -->
+        <div class="section-title-wrap">
+          <svg width="24" height="28" viewBox="0 0 24 28" fill="#E53935" aria-hidden="true">
+            <path d="M12 1.5C12 1.5 2 12.2 2 18.5C2 23.8 6.5 27.5 12 27.5C17.5 27.5 22 23.8 22 18.5C22 12.2 12 1.5 12 1.5Z" />
+          </svg>
+          <h2 class="h3 mb-0">Patient Blood Request Form</h2>
+        </div>
+
+        <p class="text-muted mb-4">
+          Please fill out the patient's medical details accurately. Your blood request will be registered and immediately broadcasted to volunteer donors across Islamabad, Rawalpindi, and nearby cities.
+        </p>
+
+        <!-- Submission Feedback Alert Box (Hidden by default) -->
+        <div id="submissionAlert" class="alert alert-success d-none mb-4 shadow-sm" role="alert" aria-live="polite">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <svg width="24" height="24" fill="#155724" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            <h4 class="alert-heading mb-0 fw-bold">Blood Request Submitted Successfully!</h4>
+          </div>
+          <p class="mb-2">Your emergency blood requisition has been registered with reference tracking ID: <strong id="alertGeneratedId" class="badge bg-danger fs-6">REQ-000000</strong></p>
+          <p class="mb-3 small">Donors can now view and respond to this request on the Active Requests board.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="active-requests.html" class="btn btn-red btn-sm px-3">View In Active Requests</a>
+            <button type="button" id="alertNewRequestBtn" class="btn btn-outline-secondary btn-sm px-3">Submit Another Request</button>
+          </div>
+        </div>
+
+        <!-- Request Form Card -->
+        <div class="request-form-card p-4 p-md-5">
+          <form id="bloodRequestForm" novalidate>
+            <div class="row g-3 g-md-4">
+
+              <!-- Field 1: Patient Name -->
+              <div class="col-12 col-md-6">
+                <label for="patientName" class="form-label">Patient Name <span class="required">*</span></label>
+                <input type="text" id="patientName" name="patientName" class="form-control" placeholder="e.g. Sarah Ahmed" required>
+                <div class="invalid-feedback" id="patientNameError">Please enter the patient's full name (at least 3 characters).</div>
+              </div>
+
+              <!-- Field 2: Patient Age -->
+              <div class="col-12 col-md-6">
+                <label for="patientAge" class="form-label">Patient Age (Years) <span class="required">*</span></label>
+                <input type="number" id="patientAge" name="patientAge" class="form-control" placeholder="e.g. 28" min="1" max="120" required>
+                <div class="invalid-feedback" id="patientAgeError">Please enter a valid age between 1 and 120.</div>
+              </div>
+
+              <!-- Field 3: Blood Group -->
+              <div class="col-12 col-md-6">
+                <label for="bloodGroup" class="form-label">Blood Group Required <span class="required">*</span></label>
+                <select id="bloodGroup" name="bloodGroup" class="form-select" required>
+                  <option value="" disabled selected>-- Select Blood Group --</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+                <div class="invalid-feedback" id="bloodGroupError">Please select a valid blood group.</div>
+              </div>
+
+              <!-- Field 4: Required Blood Units -->
+              <div class="col-12 col-md-6">
+                <label for="bloodUnits" class="form-label">Required Units (Bags) <span class="required">*</span></label>
+                <input type="number" id="bloodUnits" name="bloodUnits" class="form-control" placeholder="e.g. 2" min="1" max="10" required>
+                <div class="invalid-feedback" id="bloodUnitsError">Required blood units must be between 1 and 10 bags.</div>
+              </div>
+
+              <!-- Field 5: Hospital Name -->
+              <div class="col-12 col-md-6">
+                <label for="hospitalName" class="form-label">Hospital / Clinic Name <span class="required">*</span></label>
+                <input type="text" id="hospitalName" name="hospitalName" class="form-control" placeholder="e.g. Shifa International Hospital" required>
+                <div class="invalid-feedback" id="hospitalNameError">Please enter the hospital or medical center name.</div>
+              </div>
+
+              <!-- Field 6: City -->
+              <div class="col-12 col-md-6">
+                <label for="city" class="form-label">City <span class="required">*</span></label>
+                <select id="city" name="city" class="form-select" required>
+                  <option value="" disabled selected>-- Select City --</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Karachi">Karachi</option>
+                  <option value="Peshawar">Peshawar</option>
+                  <option value="Faisalabad">Faisalabad</option>
+                  <option value="Multan">Multan</option>
+                  <option value="Other">Other City</option>
+                </select>
+                <div class="invalid-feedback" id="cityError">Please select the city where blood is needed.</div>
+              </div>
+
+              <!-- Field 7: Contact Number -->
+              <div class="col-12 col-md-6">
+                <label for="contactNumber" class="form-label">Contact Number (Attendant) <span class="required">*</span></label>
+                <input type="tel" id="contactNumber" name="contactNumber" class="form-control" placeholder="e.g. 03001234567" required>
+                <div class="form-text">Enter a valid 11-digit mobile number (e.g. 03001234567).</div>
+                <div class="invalid-feedback" id="contactNumberError">Please enter a valid 11-digit mobile number.</div>
+              </div>
+
+              <!-- Field 8: Required Date -->
+              <div class="col-12 col-md-6">
+                <label for="requiredDate" class="form-label">Needed By Date <span class="required">*</span></label>
+                <input type="date" id="requiredDate" name="requiredDate" class="form-control" required>
+                <div class="form-text">Must be today or a future date. Past dates are prevented.</div>
+                <div class="invalid-feedback" id="requiredDateError">Please select a valid date (today or in the future).</div>
+              </div>
+
+              <!-- Field 9: Additional Information -->
+              <div class="col-12">
+                <label for="additionalInfo" class="form-label">Additional Information / Ward &amp; Bed Notes</label>
+                <textarea id="additionalInfo" name="additionalInfo" class="form-control" rows="3" placeholder="Specify ward number, room, surgery schedule, or patient condition details..."></textarea>
+                <div class="form-text">Optional, but helps voluntary donors coordinate swiftly.</div>
+              </div>
+
+              <!-- Form Buttons -->
+              <div class="col-12 d-flex flex-wrap gap-3 pt-2">
+                <button type="submit" id="submitRequestBtn" class="btn btn-red px-4 py-2">Submit Request</button>
+                <button type="reset" id="resetFormBtn" class="btn btn-outline-secondary px-4 py-2">Reset Form</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer pt-5 pb-3 mt-auto">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">About Red Hope</h5>
+          <p class="mb-0">
+            Red Hope connects voluntary blood donors with patients and hospitals across
+            Islamabad and Rawalpindi to help save lives when every minute counts.
+          </p>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Contact</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1">Phone: <a href="tel:0511234567">051-1234567</a></li>
+            <li class="mb-1">Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></li>
+            <li>Location: Islamabad &amp; Rawalpindi, Pakistan</li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="#">Home</a></li>
+            <li class="mb-1"><a href="#">Donate</a></li>
+            <li class="mb-1"><a href="#">Find Blood</a></li>
+            <li class="mb-1"><a href="request-blood.html">Request Blood</a></li>
+            <li class="mb-1"><a href="active-requests.html">Active Requests</a></li>
+            <li class="mb-1"><a href="#">Learn</a></li>
+            <li><a href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center">
+        <span>&copy; 2026 Red Hope</span>
+        <span>University IICT Project &bull; Member 3 Assignment</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Request Blood Script -->
+  <script src="../js/request-blood.js"></script>
+</body>
+</html>

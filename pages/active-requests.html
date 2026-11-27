@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Blood Requests | Red Hope</title>
+
+  <!-- Google Fonts: Rajdhani for headings, Lato for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Shared Red Hope Styles -->
+  <link rel="stylesheet" href="../css/style3.css">
+</head>
+<body>
+
+  <!-- Shared Header: top helpline strip + main navigation -->
+  <header>
+    <div class="top-strip py-2">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <span>Helpline: <a href="tel:0511234567">051-1234567</a></span>
+        <span>Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></span>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg site-navbar py-2" aria-label="Main navigation">
+      <div class="container">
+        <!-- Brand logo and site name -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="../images/logo.jpeg" alt="Red Hope logo showing a blood drop and heart" class="navbar-logo">
+          <span class="brand-title">Red Hope</span>
+        </a>
+
+        <!-- Mobile hamburger toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links -->
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-lg-center gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Donate</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Find Blood</a></li>
+            <li class="nav-item"><a class="nav-link" href="request-blood.html">Request Blood</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="active-requests.html">Active Requests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Learn</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1 class="display-5 mb-2">Active Blood Requests</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Active Blood Requests</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Filter & Requests Catalog Section -->
+    <section class="py-4 py-md-5">
+      <div class="container">
+
+        <!-- Search & Filter Bar (collapsible on mobile) -->
+        <div class="filter-bar p-3 p-md-4 mb-4 shadow-sm">
+          <div class="d-md-none d-grid">
+            <button class="btn btn-outline-red" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#requestFilterCollapse" aria-expanded="false" aria-controls="requestFilterCollapse">
+              Filters &amp; Search
+            </button>
+          </div>
+
+          <div class="collapse d-md-block mt-3 mt-md-0" id="requestFilterCollapse">
+            <form id="requestFilterForm" class="row g-3 align-items-end" onsubmit="return false;">
+              <!-- Search Bar -->
+              <div class="col-12 col-md-4">
+                <label for="searchInput" class="form-label fw-bold">Search Patient / Hospital</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white text-muted">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                  </span>
+                  <input type="text" id="searchInput" class="form-control" placeholder="e.g. Sarah or Shifa...">
+                </div>
+              </div>
+
+              <!-- Blood Group Filter -->
+              <div class="col-12 col-md-3">
+                <label for="bloodGroupFilter" class="form-label fw-bold">Blood Group</label>
+                <select id="bloodGroupFilter" class="form-select">
+                  <option value="">All Blood Groups</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+
+              <!-- City Filter -->
+              <div class="col-12 col-md-3">
+                <label for="cityFilter" class="form-label fw-bold">City</label>
+                <select id="cityFilter" class="form-select">
+                  <option value="">All Cities</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Karachi">Karachi</option>
+                  <option value="Peshawar">Peshawar</option>
+                  <option value="Faisalabad">Faisalabad</option>
+                  <option value="Multan">Multan</option>
+                </select>
+              </div>
+
+              <!-- Search Actions -->
+              <div class="col-12 col-md-2 d-flex align-items-center gap-3">
+                <button type="button" id="searchBtn" class="btn btn-red w-100">Search</button>
+                <a href="#" id="resetLink" class="reset-link">Reset</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Section Title with Red Drop Icon and Results Counter -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+          <div class="section-title-wrap mb-0">
+            <svg width="24" height="28" viewBox="0 0 24 28" fill="#E53935" aria-hidden="true">
+              <path d="M12 1.5C12 1.5 2 12.2 2 18.5C2 23.8 6.5 27.5 12 27.5C17.5 27.5 22 23.8 22 18.5C22 12.2 12 1.5 12 1.5Z" />
+            </svg>
+            <h2 class="h3 mb-0">Urgent Requisitions</h2>
+          </div>
+          <span id="resultsCount" class="text-muted fw-bold small">Showing 0 requests</span>
+        </div>
+
+        <!-- Requests Grid (Dynamically Populated by active-requests.js) -->
+        <div id="requestsGrid" class="row g-4"></div>
+
+        <!-- Empty State (Hidden by default, displayed when no match) -->
+        <div id="emptyState" class="text-center py-5 d-none">
+          <div class="p-4 p-md-5 bg-white rounded-3 border">
+            <svg width="56" height="56" fill="#E53935" viewBox="0 0 16 16" class="mb-3">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+            </svg>
+            <h4 class="h5 fw-bold text-dark mb-2">No Blood Requests Found</h4>
+            <p class="text-muted mb-4">No active blood requests matched your search criteria or filter selection.</p>
+            <div class="d-flex justify-content-center gap-2">
+              <button type="button" id="clearFilterBtn" class="btn btn-outline-red btn-sm px-3">Clear Filters</button>
+              <a href="request-blood.html" class="btn btn-red btn-sm px-3">Submit a Blood Request</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer pt-5 pb-3 mt-auto">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">About Red Hope</h5>
+          <p class="mb-0">
+            Red Hope connects voluntary blood donors with patients and hospitals across
+            Islamabad and Rawalpindi to help save lives when every minute counts.
+          </p>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Contact</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1">Phone: <a href="tel:0511234567">051-1234567</a></li>
+            <li class="mb-1">Email: <a href="mailto:help@redhope.pk">help@redhope.pk</a></li>
+            <li>Location: Islamabad &amp; Rawalpindi, Pakistan</li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1"><a href="#">Home</a></li>
+            <li class="mb-1"><a href="#">Donate</a></li>
+            <li class="mb-1"><a href="#">Find Blood</a></li>
+            <li class="mb-1"><a href="request-blood.html">Request Blood</a></li>
+            <li class="mb-1"><a href="active-requests.html">Active Requests</a></li>
+            <li class="mb-1"><a href="#">Learn</a></li>
+            <li><a href="#">Stories</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center">
+        <span>&copy; 2026 Red Hope</span>
+        <span>University IICT Project &bull; Member 3 Assignment</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Active Requests Script -->
+  <script src="../js/active-requests.js"></script>
+</body>
+</html>
