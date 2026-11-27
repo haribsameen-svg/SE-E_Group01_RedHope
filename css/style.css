@@ -68,7 +68,8 @@ h1, h2, h3, h4, h5, h6,
 .site-navbar .nav-link {
   color: var(--grey-dark);
   font-weight: 700;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 0.7rem;
+  white-space: nowrap;
 }
 
 .site-navbar .nav-link:hover,
@@ -101,6 +102,12 @@ h1, h2, h3, h4, h5, h6,
 .btn-outline-red:focus {
   background-color: var(--red-main);
   color: var(--white);
+}
+
+/* Slightly larger Search button so users spot it easily */
+.btn-search {
+  padding: 0.6rem 1.5rem;
+  font-size: 1.05rem;
 }
 
 /* Page Banner */

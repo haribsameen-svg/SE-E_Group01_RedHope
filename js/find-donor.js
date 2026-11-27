@@ -185,7 +185,15 @@ document.addEventListener("DOMContentLoaded", function () {
     showResults(donors, "", "");
   }
 
-  // Run search when the Search button is clicked or form is submitted
+  // Live filtering: update results automatically whenever either dropdown changes
+  if (bloodGroupFilter) {
+    bloodGroupFilter.addEventListener("change", applyFilters);
+  }
+  if (cityFilter) {
+    cityFilter.addEventListener("change", applyFilters);
+  }
+
+  // Also run search when the Search button is clicked or form is submitted
   if (searchBtn) {
     searchBtn.addEventListener("click", applyFilters);
   }
