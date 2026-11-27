@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Red Hope - Donor Eligibility Page Styles
+   Matches shared Red Hope theme with left eligibility test and right Yes/No info.
+   ========================================================================== */
+
+.banner-graphic {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 1rem;
+  padding: 1.15rem 1.4rem;
+}
+
+.banner-stat-number {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Left Column: Check Eligibility Form Card */
+.eligibility-test-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-top: 4px solid #E53935;
+  border-radius: 1rem;
+  padding: 1.75rem;
+}
+
+.question-block {
+  background-color: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.question-block.is-invalid-question {
+  border-color: #DC2626;
+  background-color: #FEF2F2;
+}
+
+.field-error-msg {
+  color: #DC2626;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+.eligibility-test-card .is-invalid {
+  border-color: #DC2626 !important;
+  background-color: #FEF2F2;
+}
+
+/* Result Panel */
+.eligibility-result {
+  border-radius: 0.85rem;
+  padding: 1.25rem;
+  border: 1px solid #E5E7EB;
+}
+
+.eligibility-result.is-eligible {
+  background-color: #ECFDF5;
+  border-color: #6EE7B7;
+  border-left: 5px solid #059669;
+  color: #065F46;
+}
+
+.eligibility-result.is-deferred {
+  background-color: #FFFBEB;
+  border-color: #FCD34D;
+  border-left: 5px solid #D97706;
+  color: #92400E;
+}
+
+.eligibility-result.is-ineligible {
+  background-color: #FEF2F2;
+  border-color: #FCA5A5;
+  border-left: 5px solid #DC2626;
+  color: #991B1B;
+}
+
+/* Right Column: Yes & No Eligibility Info Cards */
+.info-card-yes {
+  background-color: #FFFFFF;
+  border: 1px solid #D1FAE5;
+  border-top: 4px solid #059669;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.info-card-no {
+  background-color: #FFFFFF;
+  border: 1px solid #FECACA;
+  border-top: 4px solid #DC2626;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.criteria-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 0.95rem;
+}
+
+.criteria-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.criteria-icon {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* Save Up To 3 Lives Heart Card under Yes/No Info */
+.lives-impact-card {
+  background: linear-gradient(135deg, #FFF5F5 0%, #FFEBEE 100%);
+  border: 1px solid #FECACA;
+  border-left: 5px solid #E53935;
+  border-radius: 1rem;
+  padding: 1.25rem 1.4rem;
+}
+
+.heart-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid #FECACA;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+  .eligibility-test-card,
+  .info-card-yes,
+  .info-card-no {
+    padding: 1.2rem;
+  }
+}
